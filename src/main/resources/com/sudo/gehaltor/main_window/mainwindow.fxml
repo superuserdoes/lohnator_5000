@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainWindowPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="940.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+        <top>
+<!--            <fx:include fx:id="menuBar" source="../topmenu/topMenuBar.fxml" />-->
+            <fx:include fx:id="menuBar" source="../topmenu/topMenuBar.fxml" />
+        </top>
+        <center>
+            <VBox id="center_vbox" fx:id="vbox_center" alignment="CENTER" cache="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="100.0">
+                <ImageView fx:id="PDFImageView" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                <Pagination fx:id="PDFImageViewPagination" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pageCount="5" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Pagination>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+            </VBox>
+        </center>
+        <left>
+            <ScrollPane fx:id="scroll_pane_left" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="500.0" minWidth="280.0" BorderPane.alignment="CENTER">
+                <content>
+                    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <children>
+                            <VBox fx:id="vbox_left" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <children>
+                                    <TitledPane fx:id="tp_employees" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Employees" wrapText="true" VBox.vgrow="ALWAYS">
+                                        <content>
+                                            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <children>
+                                                    <ListView fx:id="lv_employees" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="115.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-9.0" />
+                                 </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </TitledPane>
+                                    <TitledPane fx:id="tp_files" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Files" wrapText="true" VBox.vgrow="ALWAYS">
+                                        <content>
+                              <ScrollPane fx:id="sp_files" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                 <content>
+                                    <TreeView id="tv_files" fx:id="tv_files" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pickOnBounds="false">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <effect>
+                                          <Blend mode="BLUE" />
+                                       </effect>
+                                    </TreeView>
+                                 </content>
+                              </ScrollPane>
+                                        </content>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                                    </TitledPane>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </ScrollPane>
+        </left>
+   <right>
+      <AnchorPane id="anchorPane" fx:id="ac_pane_employee" focusTraversable="true" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
+               <children>
+                  <GridPane vgap="5.0">
+                    <columnConstraints>
+                      <ColumnConstraints minWidth="10.0" />
+                      <ColumnConstraints minWidth="10.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="SVN:" wrapText="true" />
+                        <TextField fx:id="employee_svn" disable="true" editable="false" layoutX="1.0" promptText="Employee SVN" GridPane.columnIndex="1" />
+                        <TextField fx:id="employee_name" disable="true" promptText="Employee Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="employee_surname" disable="true" promptText="Employee Surname" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <Label text="Name:" wrapText="true" GridPane.rowIndex="1" />
+                        <Label text="Surname:" wrapText="true" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="employee_email" disable="true" maxWidth="1.7976931348623157E308" minWidth="170.0" promptText="Employee E-Mail" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <Label text="E-Mail:" wrapText="true" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" focusTraversable="true" spacing="20.0">
+                     <children>
+                        <ToggleButton id="btn_edit" fx:id="btn_employee_edit" mnemonicParsing="false" text="Edit" />
+                        <Button id="btn_update" fx:id="btn_employee_update" mnemonicParsing="false" text="Update" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </AnchorPane>
+   </right>
+   <bottom>
+      <GridPane fx:id="bottom_grid_pane" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints prefHeight="12.0" />
+         </rowConstraints>
+         <children>
+            <ProgressBar fx:id="progressbar_loading" maxWidth="1.7976931348623157E308" progress="0.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+            <HBox fx:id="hbox_btns" alignment="BOTTOM_CENTER" spacing="10.0">
+               <children>
+                  <Button id="btn_send_pdf" fx:id="btn_send_pdf" alignment="CENTER" mnemonicParsing="false" text="Send PDF(s) via E-Mail" wrapText="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button id="btn_print_pdf" fx:id="btn_print_pdf" alignment="CENTER" layoutX="245.0" layoutY="20.0" mnemonicParsing="false" text="Print PDF(s)" wrapText="true" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </HBox>
+            <Label id="label_time" fx:id="label_time" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <padding>
+                  <Insets right="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
+   </bottom>
+
+
+    </BorderPane>

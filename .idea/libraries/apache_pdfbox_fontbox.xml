@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="apache.pdfbox.fontbox" type="repository">
+    <properties maven-id="org.apache.pdfbox:fontbox:3.0.0-RC1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/3.0.0-RC1/fontbox-3.0.0-RC1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/3.0.0-RC1/fontbox-3.0.0-RC1-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
