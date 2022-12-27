@@ -10,17 +10,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="loginPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
-    <top>
-        <fx:include fx:id="topMenuBar" source="../topmenu/topMenuBar.fxml" />
-    </top>
     <center>
         <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -51,12 +50,16 @@
                         <Insets top="50.0" />
                     </GridPane.margin>
                 </ComboBox>
-                <PasswordField fx:id="passwordField" promptText="password" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
-                    <GridPane.margin>
-                        <Insets top="50.0" />
-                    </GridPane.margin>
-                </PasswordField>
-                <CheckBox id="rememberMe" fx:id="rememberMeCheckBox" mnemonicParsing="false" stylesheets="@../css/styles.css" text="Remember me" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <HBox GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+               <children>
+                      <PasswordField fx:id="passwordField" prefWidth="290.0" promptText="password" />
+                  <ToggleButton fx:id="tglBtn_show_password" mnemonicParsing="false" prefHeight="25.0" prefWidth="50.0" text="Show" />
+               </children>
+            </HBox>
+                <CheckBox id="rememberMe" fx:id="rememberMeCheckBox" mnemonicParsing="false" selected="true" stylesheets="@../css/styles.css" text="Remember me" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                     <GridPane.margin>
                         <Insets top="40.0" />
                     </GridPane.margin>

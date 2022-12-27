@@ -1,5 +1,7 @@
 package com.sudo.gehaltor.email;
 
+import com.sudo.gehaltor.config.AppProperties;
+import com.sudo.gehaltor.config.AppSettings;
 import com.sudo.gehaltor.services.PDF_Executor;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -17,8 +19,6 @@ import javafx.stage.Stage;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import java.io.File;
-import java.util.ArrayList;
 
 public class EmailPromptController {
     @FXML BorderPane email_from_pane;
@@ -62,12 +62,26 @@ public class EmailPromptController {
 
     public void initialize(){
         enable_loading_part(false);
+
         if (show_error){
             email_error_label.setText(error);
             email_error_label.setTextFill(Color.RED);
         }
 
         button_download.setOnAction(actionEvent -> {
+            if (save_email_checkbox.isSelected() && button_search_by_name.isSelected()){
+                AppSettings.getInstance().setFinancial_advisor_name(email_from_field.getText());
+            } else if (save_email_checkbox.isSelected() && !button_search_by_name.isSelected()){
+                String email = email_from_field.getText() + email_from_extension.getValue().toString();
+                System.out.println("EMAIL TO BE SET: " + email);
+                AppSettings.getInstance().setFinancial_advisor_email(email);
+            } else {
+                AppSettings.getInstance().setFinancial_advisor_email("");
+                AppSettings.getInstance().setFinancial_advisor_name("");
+            }
+            // save
+            AppProperties.getInstance().save_properties();
+            // download
             downloadAttachments();
         });
 
@@ -78,6 +92,11 @@ public class EmailPromptController {
             }
         });
 
+        if (button_search_by_name.isSelected()){
+            email_from_field.setText(AppSettings.getInstance().getFinancial_advisor_name());
+        } else {
+            get_advisor_email();
+        }
 
         button_search_by_name.setOnAction(actionEvent -> {
             email_from_field.clear();
@@ -95,6 +114,7 @@ public class EmailPromptController {
                 button_download.textProperty().unbind();
                 button_download.textProperty().bind(Bindings.concat("Search for ",email_from_field.textProperty()));
                 search_by_email = false;
+                email_from_field.setText(AppSettings.getInstance().getFinancial_advisor_name());
             } else {
                 System.out.println("NOT toggled!");
                 email_error_label.setVisible(false);
@@ -107,9 +127,24 @@ public class EmailPromptController {
                 button_download.textProperty().unbind();
                 button_download.setText("Download Attachment(s)");
                 search_by_email = true;
+                get_advisor_email();
             }
             email_from_field.requestFocus();
         });
+
+    }
+
+    private void get_advisor_email() {
+        String email_first_part = "", email_second_part = "";
+        if (!AppSettings.getInstance().getFinancial_advisor_email().isEmpty() || !AppSettings.getInstance().getFinancial_advisor_email().isBlank()){
+            email_first_part = AppSettings.getInstance().getFinancial_advisor_email().substring(0, AppSettings.getInstance().getFinancial_advisor_email().indexOf('@'));
+            email_second_part = AppSettings.getInstance().getFinancial_advisor_email().substring(AppSettings.getInstance().getFinancial_advisor_email().indexOf('@'));
+        }
+        email_from_field.setText(email_first_part);
+        if (email_second_part.isEmpty() || email_second_part.isBlank())
+            email_from_extension.getSelectionModel().selectFirst();
+        else
+            email_from_extension.setValue(email_second_part);
     }
 
     private void enable_loading_part(boolean enabled) {
@@ -134,20 +169,17 @@ public class EmailPromptController {
             System.out.println("Gonna do the e-mail search by e-mail input");
             String email_from = email_from_field.getText();
             String email_extension = email_from_extension.getValue();
-            if (!email_extension.contains(".") || email_from.isEmpty() || email_from.equalsIgnoreCase(" ")){
-                System.out.println("DOESN'T contain a dot OR empty");
+            if (!email_extension.contains(".") || email_from.isEmpty() || email_from.equalsIgnoreCase(" "))
                 valid_email = false;
-            } else {
+            else
                 valid_email = true;
-            }
 
             String email = email_from + email_extension;
 
             if (isValidEmailAddress(email)){
                 this.email = email;
                 show_loading_screen(true);
-            }
-            else{
+            } else {
                 show_error_label_message("E-Mail");
             }
         } else {
@@ -198,8 +230,8 @@ public class EmailPromptController {
 
                 task.setOnSucceeded(workerStateEvent -> {
                     progress_label.setText("DONE!");
-                    final ArrayList<File> attachments = email.get_downloaded_attachments();
-                    onSucceeded(attachments);
+//                    final ArrayList<File> attachments = email.get_downloaded_attachments();
+                    onSucceeded();
                 });
                 task.setOnFailed(workerStateEvent -> {
                     progress_label.setText("ERROR!");
@@ -215,7 +247,7 @@ public class EmailPromptController {
     public boolean isDone(){
         return isDone;
     }
-    private void onSucceeded(ArrayList<File> downloaded_attachments) {
+    private void onSucceeded() {
         isDone = true;
         stage.close();
     }

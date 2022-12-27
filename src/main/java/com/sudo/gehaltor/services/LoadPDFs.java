@@ -260,37 +260,28 @@ public class LoadPDFs {
                 );
 
         emailButton.setOnAction(actionEvent -> {
-            System.out.println("EMAIL CLICKED!");
-//            try {
-            System.out.println(getClass().getResource("/com/sudo/gehaltor/login/login.fxml"));
-
-                Stage primary_stage  = new Stage();
+            Stage primary_stage  = new Stage();
             LoginController loginController = new LoginController(primary_stage);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/sudo/gehaltor/login/login.fxml"));
             fxmlLoader.setController(loginController);
 
             try {
                 Scene scene = new Scene(fxmlLoader.load());
-//                scene.getStylesheets().add(getClass().getResource(AppConfiguration.CSS_PATH.getValue()).toExternalForm());
                 primary_stage.setTitle(AppConfiguration.PROGRAM_TITLE.getValue());
                 primary_stage.initModality(Modality.APPLICATION_MODAL);
                 primary_stage.setResizable(false);
                 primary_stage.setScene(scene);
                 primary_stage.showAndWait();
                 primary_stage.setOnCloseRequest(windowEvent -> {
-
+//                    PDF_Executor.getInstance().shutdownNow();
                 });
-
                 if (loginController.getEmailPromptController().isDone()){
                     File save_dir = new File(AppConfiguration.DOWNLOADS_PATH.getValue());
                     List<File> files = new ArrayList<>(List.of(Objects.requireNonNull(save_dir.listFiles())));
                     process_selected_files(table, cancelAllButton, newTasksButton, files);
                 }
 
-            } catch (Exception e){
-                System.out.println("Couldn't load login screen: " + e);
-//                e.printStackTrace();
-            }
+            } catch (Exception e){ System.out.println("Couldn't load login screen: " + e); }
         });
 
         final VBox box = new VBox(newTasksButton, emailButton);

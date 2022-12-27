@@ -50,7 +50,7 @@
                         <Insets />
                     </GridPane.margin>
                 </ComboBox>
-                <CheckBox fx:id="save_email_checkbox" alignment="CENTER" mnemonicParsing="false" stylesheets="@../css/styles.css" text="Remember e-mail address" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                <CheckBox fx:id="save_email_checkbox" alignment="CENTER" mnemonicParsing="false" selected="true" stylesheets="@../css/styles.css" text="Remember e-mail address" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets top="20.0" />
                     </GridPane.margin>

@@ -10,7 +10,9 @@ public class AppSettings {
     private SimpleStringProperty property_file_path = new SimpleStringProperty(this, "property_file_path", AppConfiguration.PROGRAMS_PATH.getValue() + PDF_File.PROPERTIES_FILE_NAME);
     private SimpleStringProperty email = new SimpleStringProperty(this, "email", "");
     private SimpleStringProperty password = new SimpleStringProperty(this,"password", "");
-    private SimpleBooleanProperty auto_login = new SimpleBooleanProperty(this, "auto_login" ,false);
+    private SimpleBooleanProperty auto_login = new SimpleBooleanProperty(this, "auto_login" ,true);
+    private SimpleStringProperty financial_advisor_name = new SimpleStringProperty(this, "berater_name","");
+    private SimpleStringProperty financial_advisor_email = new SimpleStringProperty(this, "berater_email","");
     private SimpleIntegerProperty date_sync_emails = new SimpleIntegerProperty(this, "day_of_month_sync_emails", 15);
     private SimpleIntegerProperty date_send_emails = new SimpleIntegerProperty(this, "day_of_month_send_emails", 15);
     private SimpleIntegerProperty num_of_threads = new SimpleIntegerProperty(this, "number_of_threads", Runtime.getRuntime().availableProcessors() >> 1);
@@ -79,6 +81,30 @@ public class AppSettings {
         this.auto_login.set(auto_login);
     }
 
+    public String getFinancial_advisor_name() {
+        return financial_advisor_name.get();
+    }
+
+    public SimpleStringProperty financial_advisor_nameProperty() {
+        return financial_advisor_name;
+    }
+
+    public void setFinancial_advisor_name(String financial_advisor_name) {
+        this.financial_advisor_name.set(financial_advisor_name);
+    }
+
+    public String getFinancial_advisor_email() {
+        return financial_advisor_email.get();
+    }
+
+    public SimpleStringProperty financial_advisor_emailProperty() {
+        return financial_advisor_email;
+    }
+
+    public void setFinancial_advisor_email(String financial_advisor_email) {
+        this.financial_advisor_email.set(financial_advisor_email);
+    }
+
     public int getDate_sync_emails() {
         return date_sync_emails.get();
     }
@@ -114,7 +140,6 @@ public class AppSettings {
     public void setNum_of_threads(int num_of_threads) {
         this.num_of_threads.set(num_of_threads);
         // shutdown
-        System.out.println("SHUTDOWN ServiceExecutor");
         PDF_Executor.getInstance().shutdown();
     }
 }

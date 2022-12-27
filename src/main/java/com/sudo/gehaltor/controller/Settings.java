@@ -20,6 +20,8 @@ public class Settings {
     @FXML ToggleButton tglBtn_show_password;
     @FXML RadioButton rb_remember;
     @FXML RadioButton rb_dont_remember;
+    @FXML TextField textField_advisor_name;
+    @FXML TextField textField_advisor_email;
     @FXML Button btn_ok;
     @FXML Button btn_cancel;
     @FXML Button btn_apply;
@@ -53,6 +55,9 @@ public class Settings {
                 showPassword();
             }
         });
+
+        textField_advisor_email.setText(AppSettings.getInstance().getFinancial_advisor_email());
+        textField_advisor_name.setText(AppSettings.getInstance().getFinancial_advisor_name());
     }
 
     private void setup_radio_buttons() {
@@ -88,15 +93,19 @@ public class Settings {
         });
         btn_reset_default.setOnAction(actionEvent -> {
             slider_performance.setValue(cores >> 1);
-            rb_dont_remember.setSelected(true);
+            rb_remember.setSelected(true);
             textField_email.setText("");
             passwordField.setText("");
+            textField_advisor_email.setText("");
+            textField_advisor_name.setText("");
         });
     }
 
     private void save_settings(){
         AppSettings.getInstance().setNum_of_threads(threadCount.getValue());
         AppSettings.getInstance().setEmail(textField_email.getText());
+        AppSettings.getInstance().setFinancial_advisor_email(textField_advisor_email.getText());
+        AppSettings.getInstance().setFinancial_advisor_name(textField_advisor_name.getText());
         if (rb_remember.isSelected()) AppSettings.getInstance().setPassword(passwordField.getText());
         else AppSettings.getInstance().setPassword("");
         AppSettings.getInstance().setAuto_login(rb_remember.isSelected());
@@ -113,6 +122,7 @@ public class Settings {
         toolTip.setShowDelay(Duration.ZERO);
         toolTip.setAutoHide(false);
         toolTip.setMinWidth(50);
+        toolTip.setStyle("-fx-font-size: 13");
         Point2D p = passwordField.localToScene(passwordField.getBoundsInLocal().getMinX(), passwordField.getBoundsInLocal().getMinY());
         toolTip.setText(passwordField.getText());
         toolTip.show(passwordField, p.getX() + stage.getScene().getX() + stage.getX(), p.getY()+25 + stage.getScene().getY() + stage.getY());

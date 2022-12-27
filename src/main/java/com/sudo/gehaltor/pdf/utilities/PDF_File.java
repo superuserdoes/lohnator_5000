@@ -1,6 +1,8 @@
 package com.sudo.gehaltor.pdf.utilities;
 
 import com.sudo.gehaltor.config.AppConfiguration;
+import com.sudo.gehaltor.config.AppProperties;
+import com.sudo.gehaltor.config.AppSettings;
 import com.sudo.gehaltor.data.Employee;
 import com.sudo.gehaltor.model.Employees;
 import javafx.collections.ObservableList;
@@ -71,8 +73,19 @@ public interface PDF_File {
         return false;
     }
 
+    static boolean load_default_properties(){
+        File file = new File(AppSettings.getInstance().getProperty_file_path());
+        System.out.println("CHECK existance of " + file.getName() + " @ {" + file.getAbsolutePath() + "}");
+        if (!file.exists()){
+            System.out.println("File does NOT exist, creating...");
+            file.getParentFile().mkdirs();
+            AppProperties.getInstance().save_properties();
+            return true;
+        } else return false;
+    }
+
     static boolean create_directory(File dir) {
-        return dir.mkdirs();
+        return dir.getParentFile().mkdirs();
     }
 
     static boolean delete_directory(File dir) {
