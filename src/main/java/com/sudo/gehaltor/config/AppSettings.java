@@ -15,16 +15,6 @@ public class AppSettings {
     private SimpleIntegerProperty date_send_emails = new SimpleIntegerProperty(this, "day_of_month_send_emails", 15);
     private SimpleIntegerProperty num_of_threads = new SimpleIntegerProperty(this, "number_of_threads", Runtime.getRuntime().availableProcessors() >> 1);
 
-//    private static ObservableList<AppSettings> appProperties = FXCollections.observableArrayList(appProperties -> new Observable[]{
-//            appProperties.num_of_threadsProperty(),
-//            appProperties.emailProperty(),
-//            appProperties.passwordProperty(),
-//            appProperties.auto_loginProperty(),
-//            appProperties.date_sync_emailsProperty(),
-//            appProperties.date_send_emailsProperty(),
-//            appProperties.property_file_pathProperty()
-//    });
-
     private static volatile AppSettings instance;
 
     private AppSettings(){}
