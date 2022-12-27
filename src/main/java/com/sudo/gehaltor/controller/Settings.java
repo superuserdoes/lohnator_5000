@@ -1,27 +1,31 @@
 package com.sudo.gehaltor.controller;
 
-import com.sudo.gehaltor.config.AppConfiguration;
-import com.sudo.gehaltor.pdf.utilities.PDF_File;
-import com.sudo.gehaltor.services.PDF_Executor;
+import com.sudo.gehaltor.config.AppProperties;
+import com.sudo.gehaltor.config.AppSettings;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.geometry.Point2D;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.StringConverter;
-
-import java.io.*;
-import java.util.Properties;
 
 public class Settings {
     @FXML Slider slider_performance;
     @FXML Label label_thread_count;
+    @FXML TextField textField_email;
+    @FXML PasswordField passwordField;
+    @FXML ToggleButton tglBtn_show_password;
+    @FXML RadioButton rb_remember;
+    @FXML RadioButton rb_dont_remember;
     @FXML Button btn_ok;
     @FXML Button btn_cancel;
     @FXML Button btn_apply;
     @FXML Button btn_reset_default;
+    private SimpleBooleanProperty showPassword  = new SimpleBooleanProperty();
+    private Tooltip toolTip;
 
     private Stage stage;
     private final int cores = Runtime.getRuntime().availableProcessors();
@@ -34,46 +38,96 @@ public class Settings {
     public void initialize(){
         System.out.println("SETTINGS INITIALIZED!");
         buttons();
+        setup_radio_buttons();
+        setup_fields();
         performance_settings();
-        File file = new File(AppConfiguration.PROGRAMS_PATH.getValue() + PDF_File.PROPERTIES_FILE_NAME);
-        System.out.println(file);
-        if (!file.exists()) {
-            System.out.println("NO EXISTO!!!!!!!!!!!!!!!!!");
-            // Create first if non-existent
-            save_properties();
-        }
-        load_saved_properties();
+    }
+
+    private void setup_fields() {
+        toolTip = new Tooltip();
+
+        textField_email.setText(AppSettings.getInstance().getEmail());
+        passwordField.setText(AppSettings.getInstance().getPassword());
+        passwordField.setOnKeyTyped(keyEvent -> {
+            if ( showPassword.get() ) {
+                showPassword();
+            }
+        });
+    }
+
+    private void setup_radio_buttons() {
+        ToggleGroup toggleGroup = new ToggleGroup();
+        toggleGroup.getToggles().add(rb_remember);
+        toggleGroup.getToggles().add(rb_dont_remember);
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
+            System.out.println(t1 + " selected!");
+        });
+        if (AppSettings.getInstance().auto_loginProperty().get())
+            rb_remember.setSelected(true);
+        else
+            rb_dont_remember.setSelected(true);
     }
 
     private void buttons() {
+        showPassword.bind(tglBtn_show_password.selectedProperty());
+        showPassword.addListener((observable, oldValue, newValue) -> {
+            if (newValue) showPassword();
+            else hidePassword();
+        });          
         btn_ok.setOnAction(actionEvent -> {
-            System.out.println("OK");
-            save_properties();
+            threadCount.setValue(slider_performance.getValue());
+            save_settings();
             stage.close();
         });
         btn_apply.setOnAction(actionEvent -> {
-            System.out.println("Apply");
-            save_properties();
+            threadCount.setValue(slider_performance.getValue());
+            save_settings();
         });
         btn_cancel.setOnAction(actionEvent -> {
-            System.out.println("Cancel");
             stage.close();
         });
         btn_reset_default.setOnAction(actionEvent -> {
-            System.out.println("RESET!!!");
             slider_performance.setValue(cores >> 1);
-            save_properties();
+            rb_dont_remember.setSelected(true);
+            textField_email.setText("");
+            passwordField.setText("");
         });
     }
 
+    private void save_settings(){
+        AppSettings.getInstance().setNum_of_threads(threadCount.getValue());
+        AppSettings.getInstance().setEmail(textField_email.getText());
+        if (rb_remember.isSelected()) AppSettings.getInstance().setPassword(passwordField.getText());
+        else AppSettings.getInstance().setPassword("");
+        AppSettings.getInstance().setAuto_login(rb_remember.isSelected());
+        // save
+        AppProperties.getInstance().save_properties();
+    }
+
+    private void hidePassword() {
+        toolTip.setText("");
+        toolTip.hide();
+    }
+
+    private void showPassword() {
+        toolTip.setShowDelay(Duration.ZERO);
+        toolTip.setAutoHide(false);
+        toolTip.setMinWidth(50);
+        Point2D p = passwordField.localToScene(passwordField.getBoundsInLocal().getMinX(), passwordField.getBoundsInLocal().getMinY());
+        toolTip.setText(passwordField.getText());
+        toolTip.show(passwordField, p.getX() + stage.getScene().getX() + stage.getX(), p.getY()+25 + stage.getScene().getY() + stage.getY());
+    }
+
     private void performance_settings(){
-        threadCount = new SimpleIntegerProperty(cores>>1);
+//        threadCount = AppProperties.getInstance().num_of_threadsProperty();
+        threadCount = AppSettings.getInstance().num_of_threadsProperty();
+
 
         slider_performance.setMin(1);
         slider_performance.setMax(cores);
-        slider_performance.setValue(cores >> 1);
+        slider_performance.setValue(threadCount.doubleValue());
 
-        label_thread_count.setText("(Threads: " + cores/2 + ")");
+        label_thread_count.setText("(Threads: " + threadCount.intValue() + ")");
         slider_performance.setLabelFormatter(new StringConverter<Double>() {
             @Override
             public String toString(Double n) {
@@ -102,44 +156,7 @@ public class Settings {
         slider_performance.valueProperty().addListener((observableValue, aBoolean, t1) -> {
            label_thread_count.textProperty().unbind();
            label_thread_count.textProperty().bind(Bindings.format("(Threads: %d)", t1.intValue()));
-           threadCount.setValue(t1.intValue());
         });
     }
-
-    private void load_saved_properties(){
-        Properties prop = new Properties();
-        File file = new File(AppConfiguration.PROGRAMS_PATH.getValue() + PDF_File.PROPERTIES_FILE_NAME);
-        Integer threads = cores/2;
-        try (FileInputStream fis = new FileInputStream(file)) {
-            prop.load(fis);
-            threads = Integer.parseInt(prop.getProperty("threadCount"));
-        } catch (FileNotFoundException ex) {
-            // FileNotFoundException catch is optional and can be collapsed
-        } catch (IOException ex) { }
-        threadCount.setValue(threads);
-        slider_performance.setValue(threads);
-    }
-
-    private void save_properties(){
-        String file_path =  AppConfiguration.PROGRAMS_PATH.getValue() + PDF_File.PROPERTIES_FILE_NAME;
-        File path = new File(file_path);
-        if (!path.exists())
-            path.getParentFile().mkdirs();
-
-        try (OutputStream output = new FileOutputStream(path)) {
-            Properties prop = new Properties();
-            // set the properties value
-            prop.setProperty("threadCount", String.valueOf(threadCount.getValue()));
-            // save properties to project root folder
-            prop.store(output, null);
-            System.out.println(prop);
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-
-        // shutdown so it can update number of threads
-        PDF_Executor.getInstance().shutdown();
-    }
-
 
 }

@@ -17,7 +17,6 @@ public class Employees {
                     employee.surnameProperty(),
                     employee.emailProperty(),
                     employee.getFiles()
-//                    employee.getImages()
             }
     );
     private static ObjectProperty<Employee> currentEmployee = new SimpleObjectProperty<>(null);
