@@ -211,9 +211,9 @@ public class EmailPromptController {
 
     private void search_emails(){
         try {
-            Email email = new Email(emailConfig, this.email, true); // important, EMAIL
+            OLDEmail OLDEmail = new OLDEmail(emailConfig, this.email, true); // important, EMAIL
 
-            Task task = email.get_check_email_task();
+            Task task = OLDEmail.get_check_email_task();
             if (task != null) {
                 // scroll to top
                 task.messageProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) -> {
@@ -225,12 +225,12 @@ public class EmailPromptController {
                                         "-fx-font-weight: normal;");
                 progressBar.progressProperty().bind(task.progressProperty());
                 // update label from another thread
-                email.text_labelProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) -> Platform.runLater(() -> progress_label.setText(newValue.toString())));
+                OLDEmail.text_labelProperty().addListener((ChangeListener<Object>) (observable, oldValue, newValue) -> Platform.runLater(() -> progress_label.setText(newValue.toString())));
                 textArea.textProperty().bind(task.messageProperty());
 
                 task.setOnSucceeded(workerStateEvent -> {
                     progress_label.setText("DONE!");
-//                    final ArrayList<File> attachments = email.get_downloaded_attachments();
+//                    final ArrayList<File> attachments = OLDEmail.get_downloaded_attachments();
                     onSucceeded();
                 });
                 task.setOnFailed(workerStateEvent -> {

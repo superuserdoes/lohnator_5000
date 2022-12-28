@@ -157,12 +157,12 @@
             <ProgressBar fx:id="progressbar_loading" maxWidth="1.7976931348623157E308" progress="0.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
             <HBox fx:id="hbox_btns" alignment="BOTTOM_CENTER" spacing="10.0">
                <children>
-                  <Button id="btn_send_pdf" fx:id="btn_send_pdf" alignment="CENTER" mnemonicParsing="false" text="Send PDF(s) via E-Mail" wrapText="true">
+                  <Button id="btn_send_pdf" fx:id="btn_send_pdf" alignment="CENTER" mnemonicParsing="false" text="Send PDF(s) via E-Mail" visible="false" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button id="btn_print_pdf" fx:id="btn_print_pdf" alignment="CENTER" layoutX="245.0" layoutY="20.0" mnemonicParsing="false" text="Print PDF(s)" wrapText="true" />
+                  <Button id="btn_print_pdf" fx:id="btn_print_pdf" alignment="CENTER" layoutX="245.0" layoutY="20.0" mnemonicParsing="false" text="Print PDF(s)" visible="false" wrapText="true" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />

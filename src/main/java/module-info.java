@@ -9,6 +9,7 @@ module com.sudo.gehaltor {
     requires java.mail;
     requires tess4j;
     requires javafx.swing;
+    requires javafx.web;
 
     opens com.sudo.gehaltor.email to javafx.fxml;
     opens com.sudo.gehaltor.controller to javafx.fxml;

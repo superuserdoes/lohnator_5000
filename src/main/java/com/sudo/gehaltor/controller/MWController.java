@@ -2,7 +2,7 @@ package com.sudo.gehaltor.controller;
 
 import com.sudo.gehaltor.config.AppConfiguration;
 import com.sudo.gehaltor.data.Employee;
-import com.sudo.gehaltor.email.Email;
+import com.sudo.gehaltor.email.CreateNewEmail;
 import com.sudo.gehaltor.model.Employees;
 import com.sudo.gehaltor.pdf.utilities.PDF_File;
 import com.sudo.gehaltor.printer.CustomPrinterSettings;
@@ -14,6 +14,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableSet;
+import javafx.collections.SetChangeListener;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -29,9 +30,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.mail.MessagingException;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class MWController {
@@ -79,14 +80,6 @@ public class MWController {
         progressbar_loading.setVisible(false);
         menuBarController.setProgressbar_loading(progressbar_loading, label_time);
 
-        Employees.getEmployees().addListener((ListChangeListener<? super Employee>) observable -> {
-            if (!Employees.getEmployees().isEmpty()){
-                btn_send_pdf.visibleProperty().unbind();
-                btn_send_pdf.setVisible(true);
-                btn_print_pdf.visibleProperty().unbind();
-                btn_print_pdf.setVisible(true);
-            }
-        });
         setup_lv_listeners();
         setup_tv_listeners();
         setup_lv_employees();
@@ -183,8 +176,6 @@ public class MWController {
     private void setup_tv_listeners(){
         tv_files.getSelectionModel().selectedItemProperty().addListener(observable -> tv_files.scrollTo(tv_files.getSelectionModel().getSelectedIndex()));
         tp_files.expandedProperty().addListener((observableValue, aBoolean, t1) -> {
-            btn_send_pdf.visibleProperty().bind(observableValue);
-            btn_print_pdf.visibleProperty().bind(observableValue);
             if (t1){
                 if (tp_employees.isExpanded()){
                     tv_files.prefHeightProperty().bind(tv_files.expandedItemCountProperty().multiply(tree_view_cell_height));
@@ -338,6 +329,20 @@ public class MWController {
 //        setup_pagination();
         CustomTreeView customTreeView = new CustomTreeView(Employees.getCurrentEmployee());
         checkedItems = customTreeView.getCheckedItems();
+        checkedItems.addListener((SetChangeListener<? super TreeItem<File>>) change -> {
+            if (!checkedItems.isEmpty()){
+                btn_send_pdf.visibleProperty().unbind();
+                btn_print_pdf.visibleProperty().unbind();
+                btn_send_pdf.setVisible(true);
+                btn_print_pdf.setVisible(true);
+            } else {
+                btn_send_pdf.visibleProperty().unbind();
+                btn_print_pdf.visibleProperty().unbind();
+                btn_send_pdf.setVisible(false);
+                btn_print_pdf.setVisible(false);
+            }
+        });
+
         tv_files.setRoot(customTreeView.getRootItem());
         tv_files.setShowRoot(true);
 
@@ -436,54 +441,37 @@ public class MWController {
     }
 
     private void btn_sendPDF(){
+
         btn_send_pdf.setOnAction(event -> {
-            // TODO this is just a really quicl test, not final
-            // Show and wait:
-            VBox showAndWaitDemo = new VBox(10);
-            showAndWaitDemo.getChildren().add(new Label("User entered:"));
+            try {
+                if (!checkedItems.isEmpty()) {
+                    List<File> files = new ArrayList<>();
+                    checkedItems.forEach(fileTreeItem -> {
+                        System.out.println(fileTreeItem.getValue().getName());
+                        files.add(fileTreeItem.getValue());
+                    });
 
-            Label recipient_email = new Label(" ");
-
-            showAndWaitDemo.getChildren().add(recipient_email);
-            Button showAndWait = new Button("Show and Wait");
-            showAndWait.setOnAction(e -> {
-                InputDialog dialog = new InputDialog();
-                dialog.getStage().showAndWait();
-                // This will not execute until the stage is closed, so it will give the correct result:
-                recipient_email.setText(dialog.getResult());
-            });
-            showAndWaitDemo.getChildren().add(showAndWait);
-
-            HBox root = new HBox(5, showAndWaitDemo);
-            root.setAlignment(Pos.CENTER);
-
-            showAndWait.fire();
-
-            Employees.getCurrentEmployee().setEmail(recipient_email.getText());
-            PDF_File.auto_save();
+                    CreateNewEmail newEmail = new CreateNewEmail(files);
+                }
+            } catch (IOException e) { throw new RuntimeException(e); }
 
             System.out.println("Button " + btn_send_pdf.getText() + " was pressed!");
-            if (!checkedItems.isEmpty()){
-                List<File> files = new ArrayList<>();
-                checkedItems.forEach(fileTreeItem -> {
-                    System.out.println(fileTreeItem.getValue().getName());
-                    files.add(fileTreeItem.getValue());
-                });
-                new Thread(() -> {
-                    try {
-                        Email email = new Email();
-                        String to = recipient_email.getText();
-                        email.send_message_and_or_file(to,"Lohnzettel", "Guten Tag,\n" +
-                                "\n" +
-                                "Ich schicke Ihnen den/die Lohnzettel, bitte sehen Sie sich die Anlage(n) an.\n" +
-                                "\n" +
-                                "Mit freundlichen Grüßen,\n" +
-                                "Dein Arbeitgeber", files);
-                    } catch (MessagingException e) { throw new RuntimeException(e); }
-                }).start();
-            }
+//            new Thread(() -> {
+//                try {
+//                    OLDEmail email = new OLDEmail();
+
+//                    email.send_message_and_or_file(to, "Lohnzettel", "Guten Tag,\n" +
+//                            "\n" +
+//                            "Ich schicke Ihnen den/die Lohnzettel, bitte sehen Sie sich die Anlage(n) an.\n" +
+//                            "\n" +
+//                            "Mit freundlichen Grüßen,\n" +
+//                            "Dein Arbeitgeber", files);
+//                } catch (MessagingException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
         });
-        //TODO end -
+
     }
 
     private void btn_printPDF(){

@@ -55,7 +55,7 @@
                         <Insets top="20.0" />
                     </GridPane.margin>
                     <tooltip>
-                        <Tooltip text="Saves the email address">
+                        <Tooltip text="Saves the OLDEmail address">
                             <font>
                                 <Font size="14.0" />
                             </font></Tooltip>
