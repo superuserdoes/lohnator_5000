@@ -18,8 +18,6 @@ import javafx.collections.SetChangeListener;
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTreeCell;
 import javafx.scene.image.ImageView;
@@ -27,7 +25,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
@@ -466,35 +463,6 @@ public class MWController {
         LoadPDFs loadPDFs = new LoadPDFs(this.hide_loading_pdfs, this.label_time, this.progressbar_loading);
         return loadPDFs.load(primaryStage);
     }
-
-
-    private static class InputDialog {
-        private final Stage stage ;
-        private final TextField input ;
-
-        InputDialog() {
-            input = new TextField("Enter recipient's e-mail:");
-            Button close = new Button("OK");
-            VBox root = new VBox(5);
-            root.setAlignment(Pos.CENTER);
-            root.getChildren().addAll(input, close);
-            Scene scene = new Scene(root, 400, 400);
-            stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            close.setOnAction(e -> stage.hide());
-            stage.setScene(scene);
-        }
-
-        Stage getStage() {
-            return stage ;
-        }
-
-        String getResult() {
-            return input.getText();
-        }
-    }
-
-
 
 }
 
