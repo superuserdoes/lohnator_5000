@@ -441,43 +441,24 @@ public class MWController {
     }
 
     private void btn_sendPDF(){
-
         btn_send_pdf.setOnAction(event -> {
             try {
                 if (!checkedItems.isEmpty()) {
                     List<File> files = new ArrayList<>();
-                    checkedItems.forEach(fileTreeItem -> {
-                        System.out.println(fileTreeItem.getValue().getName());
-                        files.add(fileTreeItem.getValue());
-                    });
-
+                    checkedItems.forEach(fileTreeItem -> files.add(fileTreeItem.getValue()));
                     CreateNewEmail newEmail = new CreateNewEmail(files);
                 }
             } catch (IOException e) { throw new RuntimeException(e); }
-
-            System.out.println("Button " + btn_send_pdf.getText() + " was pressed!");
-//            new Thread(() -> {
-//                try {
-//                    OLDEmail email = new OLDEmail();
-
-//                    email.send_message_and_or_file(to, "Lohnzettel", "Guten Tag,\n" +
-//                            "\n" +
-//                            "Ich schicke Ihnen den/die Lohnzettel, bitte sehen Sie sich die Anlage(n) an.\n" +
-//                            "\n" +
-//                            "Mit freundlichen Grüßen,\n" +
-//                            "Dein Arbeitgeber", files);
-//                } catch (MessagingException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            });
         });
-
     }
 
     private void btn_printPDF(){
         btn_print_pdf.setOnAction(actionEvent -> {
-            System.out.println("Button " + btn_print_pdf.getText() + " was pressed!");
-            CustomPrinterSettings customPrinterSettings = new CustomPrinterSettings(checkedItems.stream().findFirst().get().getValue());
+            if (!checkedItems.isEmpty()) {
+                List<File> files = new ArrayList<>();
+                checkedItems.forEach(fileTreeItem -> files.add(fileTreeItem.getValue()));
+                CustomPrinterSettings printerSettings = new CustomPrinterSettings(files);
+            }
         });
     }
 

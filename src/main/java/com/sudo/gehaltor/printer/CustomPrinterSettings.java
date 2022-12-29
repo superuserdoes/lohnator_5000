@@ -26,6 +26,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 public class CustomPrinterSettings {
@@ -100,8 +101,17 @@ public class CustomPrinterSettings {
     //---------------------------------------------
     //---------------------------------------------
     private File file;
+    private List<File> files;
     private SimpleStringProperty customPrinterName = new SimpleStringProperty();
     private ObservableList<String> printer_names = FXCollections.observableArrayList();
+
+    public CustomPrinterSettings(List<File> files){
+        try {
+            showPrinterSettings();
+            this.files = files;
+            setup_appearance_job_attributes_job_name(); // FIXME
+        }catch (Exception e){};
+    }
 
     public CustomPrinterSettings(File file) {
         try {
@@ -339,7 +349,18 @@ public class CustomPrinterSettings {
     }
 
     private void setup_appearance_job_attributes_job_name() {
-        text_field_job_attributes_job_name.setText(this.file.getName());
+        StringBuilder job_name = new StringBuilder("");
+        if (files != null || !files.isEmpty()){
+            files.forEach(file -> {
+                job_name.append(file.getName() + ", ");
+            });
+            // delete comma and whitespace ', ' at the end
+            job_name.deleteCharAt(job_name.length()-2);
+            job_name.deleteCharAt(job_name.length()-1);
+        } else
+            job_name.append(this.file.getName());
+
+        text_field_job_attributes_job_name.setText(job_name.toString());
     }
 
     private void setup_appearance_job_attributes_user_name() {
@@ -362,7 +383,10 @@ public class CustomPrinterSettings {
             System.err.println("PRINT!");
 //            get_all_settings();
 //            set_default_print_request_attributes();
-            try { print(); } catch (Exception e) { e.printStackTrace(); }
+            try {
+//                print();
+                print_all();
+            } catch (Exception e) { e.printStackTrace(); }
         });
 
         btn_cancel.setOnAction(event -> {
@@ -441,6 +465,30 @@ public class CustomPrinterSettings {
         this.window.close();
     }
 
+    private void print_all(){
+        System.out.println("CustomPrinterSettings.print_all");
+        if (files != null || !files.isEmpty()){
+            files.forEach(file -> {
+
+                this.file = file;
+//                setup_appearance_job_attributes_job_name();
+                try { print(); } catch (Exception e) {};
+
+//                try {
+//                    PDDocument pdDocument = Loader.loadPDF(file);
+//
+//                    PrinterJob job = PrinterJob.getPrinterJob();
+//                    job.setPrintService(setCustomPrinter().getPrintService()); // set the right/desired printer
+//                    job.setPageable(new PDFPageable(pdDocument));
+//                    job.setJobName(file.getName());
+//
+//                    job.print(get_print_request_attributes());
+//                } catch (Exception e){};
+            });
+        }
+        this.window.close();
+    }
+
     private PrintRequestAttributeSet get_print_request_attributes(){
         // Build a set of attributes
         PrintRequestAttributeSet attributes = new HashPrintRequestAttributeSet();
@@ -454,7 +502,8 @@ public class CustomPrinterSettings {
         else if (settings_radio_orientation.getText().equalsIgnoreCase("reverse landscape"))
             attributes.add(OrientationRequested.REVERSE_LANDSCAPE);
         // job name
-        if (!text_field_job_attributes_job_name.getText().equalsIgnoreCase(file.getName())){
+        if (!text_field_job_attributes_job_name.getText().equalsIgnoreCase(file.getName())
+            && files.size() == 1){
             attributes.add(new JobName(text_field_job_attributes_job_name.getText(), Locale.GERMAN));
         } else
             attributes.add(new JobName(file.getName(), Locale.GERMAN)); // default file name
