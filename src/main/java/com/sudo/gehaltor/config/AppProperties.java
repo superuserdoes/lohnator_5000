@@ -1,6 +1,11 @@
 package com.sudo.gehaltor.config;
 
-import java.io.*;
+import com.sudo.gehaltor.security.Encryptor;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class AppProperties {
@@ -28,15 +33,19 @@ public class AppProperties {
             properties.setProperty(AppSettings.getInstance().date_sync_emailsProperty().getName(), AppSettings.getInstance().date_sync_emailsProperty().getValue().toString());
             properties.setProperty(AppSettings.getInstance().date_send_emailsProperty().getName(), AppSettings.getInstance().date_send_emailsProperty().getValue().toString());
             properties.setProperty(AppSettings.getInstance().auto_loginProperty().getName(), AppSettings.getInstance().auto_loginProperty().getValue().toString());
-            properties.setProperty(AppSettings.getInstance().emailProperty().getName(), AppSettings.getInstance().emailProperty().getValue());
-            properties.setProperty(AppSettings.getInstance().passwordProperty().getName(), AppSettings.getInstance().passwordProperty().getValue());
             properties.setProperty(AppSettings.getInstance().property_file_pathProperty().getName(), AppSettings.getInstance().getProperty_file_path());
             properties.setProperty(AppSettings.getInstance().financial_advisor_nameProperty().getName(), AppSettings.getInstance().getFinancial_advisor_name());
             properties.setProperty(AppSettings.getInstance().financial_advisor_emailProperty().getName(), AppSettings.getInstance().getFinancial_advisor_email());
+            properties.setProperty(AppSettings.getInstance().emailProperty().getName(), AppSettings.getInstance().emailProperty().getValue());
+            properties.setProperty(AppSettings.getInstance().encryption_passwordProperty().getName(),
+                                    AppSettings.getInstance().getEncryption_password());
+            properties.setProperty(AppSettings.getInstance().passwordProperty().getName(),
+                                    Encryptor.encrypt(AppSettings.getInstance().passwordProperty().getValue().getBytes(StandardCharsets.UTF_8),
+                                    AppSettings.getInstance().getEncryption_password()));
 
             properties.store(outputStream, null);
             outputStream.close();
-        } catch (IOException e) { /*Do nothing*/ }
+        } catch (Exception e) { /*Do nothing*/ }
     }
 
     public void load_properties(){
@@ -49,11 +58,12 @@ public class AppProperties {
             AppSettings.getInstance().setProperty_file_path(properties.getProperty(AppSettings.getInstance().property_file_pathProperty().getName()));
             AppSettings.getInstance().setDate_send_emails(Integer.parseInt(properties.getProperty(AppSettings.getInstance().date_send_emailsProperty().getName())));
             AppSettings.getInstance().setDate_sync_emails(Integer.parseInt(properties.getProperty(AppSettings.getInstance().date_sync_emailsProperty().getName())));
-            AppSettings.getInstance().setEmail(properties.getProperty(AppSettings.getInstance().emailProperty().getName()));
-            AppSettings.getInstance().setPassword(properties.getProperty(AppSettings.getInstance().passwordProperty().getName()));
             AppSettings.getInstance().setFinancial_advisor_email(properties.getProperty(AppSettings.getInstance().financial_advisor_emailProperty().getName()));
             AppSettings.getInstance().setFinancial_advisor_name(properties.getProperty(AppSettings.getInstance().financial_advisor_nameProperty().getName()));
-        } catch (IOException e) { /*Do nothing*/ }
+            AppSettings.getInstance().setEmail(properties.getProperty(AppSettings.getInstance().emailProperty().getName()));
+            AppSettings.getInstance().setEncryption_password(properties.getProperty(AppSettings.getInstance().encryption_passwordProperty().getName()));
+            AppSettings.getInstance().setPassword(Encryptor.decrypt(properties.getProperty(AppSettings.getInstance().passwordProperty().getName()), AppSettings.getInstance().getEncryption_password()));
+        } catch (Exception e) { /*Do nothing*/ }
     }
 
 

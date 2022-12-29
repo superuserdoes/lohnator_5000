@@ -1,7 +1,7 @@
 package com.sudo.gehaltor.view;
 
 import com.sudo.gehaltor.config.AppConfiguration;
-import com.sudo.gehaltor.controller.Settings;
+import com.sudo.gehaltor.config.Settings;
 import com.sudo.gehaltor.data.Employee;
 import com.sudo.gehaltor.pdf.utilities.PDF_File;
 import com.sudo.gehaltor.pdf.utilities.PDF_Processor;

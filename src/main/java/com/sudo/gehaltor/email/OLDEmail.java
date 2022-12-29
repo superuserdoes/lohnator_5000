@@ -1,6 +1,7 @@
 package com.sudo.gehaltor.email;
 
 import com.sudo.gehaltor.config.AppConfiguration;
+import com.sudo.gehaltor.config.AppSettings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;
@@ -12,8 +13,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.search.*;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -79,21 +78,9 @@ public class OLDEmail {
     }
 
     private static void load_saved_properties(){
-
-        Properties prop = new Properties();
-        File file = new File(AppConfiguration.PROGRAMS_PATH.getValue() + "email.properties");
-
-        String username = "";
-        String password = "";
-        try (FileInputStream fis = new FileInputStream(file)) {
-            prop.load(fis);
-            username = (prop.getProperty("username"));
-            password = (prop.getProperty("password"));
-            emailConfig = new EmailConfig(username, password);
-        } catch (FileNotFoundException ex) {
-            // FileNotFoundException catch is optional and can be collapsed
-        } catch (IOException | MessagingException ex) { }
-
+        try {
+            emailConfig = new EmailConfig(AppSettings.getInstance().getEmail(), AppSettings.getInstance().getPassword());
+        } catch (Exception ex) {}
     }
 
     public OLDEmail(EmailConfig emailConfig, String name, boolean downloadAttachments) throws MessagingException {

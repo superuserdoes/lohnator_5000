@@ -10,6 +10,7 @@ public class AppSettings {
     private SimpleStringProperty property_file_path = new SimpleStringProperty(this, "property_file_path", AppConfiguration.PROGRAMS_PATH.getValue() + PDF_File.PROPERTIES_FILE_NAME);
     private SimpleStringProperty email = new SimpleStringProperty(this, "email", "");
     private SimpleStringProperty password = new SimpleStringProperty(this,"password", "");
+    private SimpleStringProperty encryption_password = new SimpleStringProperty(this,"encryption_password", "");
     private SimpleBooleanProperty auto_login = new SimpleBooleanProperty(this, "auto_login" ,true);
     private SimpleStringProperty financial_advisor_name = new SimpleStringProperty(this, "berater_name","");
     private SimpleStringProperty financial_advisor_email = new SimpleStringProperty(this, "berater_email","");
@@ -68,6 +69,12 @@ public class AppSettings {
     public void setPassword(String password) {
         this.password.set(password);
     }
+
+    public String getEncryption_password() { return encryption_password.get(); }
+
+    public SimpleStringProperty encryption_passwordProperty() { return encryption_password; }
+
+    public void setEncryption_password(String encryption_password) { this.encryption_password.set(encryption_password); }
 
     public boolean isAuto_login() {
         return auto_login.get();

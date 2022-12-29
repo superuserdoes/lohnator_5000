@@ -5,6 +5,7 @@ import com.sudo.gehaltor.config.AppProperties;
 import com.sudo.gehaltor.config.AppSettings;
 import com.sudo.gehaltor.data.Employee;
 import com.sudo.gehaltor.model.Employees;
+import com.sudo.gehaltor.security.RandomEncryptionPassword;
 import javafx.collections.ObservableList;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.cos.COSBase;
@@ -79,6 +80,9 @@ public interface PDF_File {
         if (!file.exists()){
             System.out.println("File does NOT exist, creating...");
             file.getParentFile().mkdirs();
+            // create random encryption password
+            AppSettings.getInstance().setEncryption_password(RandomEncryptionPassword.generateRandomString(13));
+            // create properties with above password
             AppProperties.getInstance().save_properties();
             return true;
         } else return false;

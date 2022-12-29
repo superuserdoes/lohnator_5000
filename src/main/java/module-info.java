@@ -17,4 +17,5 @@ module com.sudo.gehaltor {
     exports com.sudo.gehaltor;
     opens com.sudo.gehaltor.printer to javafx.fxml;
     exports com.sudo.gehaltor.services;
+    opens com.sudo.gehaltor.config to javafx.fxml;
 }
