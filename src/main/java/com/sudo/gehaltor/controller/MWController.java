@@ -159,6 +159,7 @@ public class MWController {
                     // new employee selected
                     if (new_employee != null){
                         Employees.setCurrentEmployee(new_employee);
+                        hide_buttons(false);
                         setup_tv_files();
                         setup_employee_info();
                         ac_pane_employee.setVisible(false);
@@ -322,22 +323,21 @@ public class MWController {
         btn_employee_edit.setSelected(!disabled);
         btn_employee_update.disableProperty().bind(btn_employee_edit.selectedProperty().not());
     }
+    private void hide_buttons(boolean visible){
+        btn_send_pdf.visibleProperty().unbind();
+        btn_print_pdf.visibleProperty().unbind();
+        btn_send_pdf.setVisible(visible);
+        btn_print_pdf.setVisible(visible);
+    }
     private void setup_tree_view(){
 //        setup_pagination();
         CustomTreeView customTreeView = new CustomTreeView(Employees.getCurrentEmployee());
         checkedItems = customTreeView.getCheckedItems();
         checkedItems.addListener((SetChangeListener<? super TreeItem<File>>) change -> {
-            if (!checkedItems.isEmpty()){
-                btn_send_pdf.visibleProperty().unbind();
-                btn_print_pdf.visibleProperty().unbind();
-                btn_send_pdf.setVisible(true);
-                btn_print_pdf.setVisible(true);
-            } else {
-                btn_send_pdf.visibleProperty().unbind();
-                btn_print_pdf.visibleProperty().unbind();
-                btn_send_pdf.setVisible(false);
-                btn_print_pdf.setVisible(false);
-            }
+            if (checkedItems.isEmpty())
+                hide_buttons(false);
+             else
+                hide_buttons(true);
         });
 
         tv_files.setRoot(customTreeView.getRootItem());

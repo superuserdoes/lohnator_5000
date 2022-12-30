@@ -9,7 +9,7 @@
    <content>
       <ScrollPane fitToHeight="true" hbarPolicy="NEVER">
         <content>
-            <TextArea editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="All information can be found on the following link:&#10;&#10;https://github.com/superuserdoes/gehaltor_5000" wrapText="true" />
+            <TextArea editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../css/styles.css" text="All information can be found on the following link:&#10;&#10;https://github.com/superuserdoes/gehaltor_5000" wrapText="true" />
         </content>
       </ScrollPane>
    </content>

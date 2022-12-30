@@ -1,5 +1,7 @@
-package com.sudo.gehaltor.config;
+package com.sudo.gehaltor.data;
 
+import com.sudo.gehaltor.config.AppConfiguration;
+import com.sudo.gehaltor.config.AppProperties;
 import com.sudo.gehaltor.pdf.utilities.PDF_File;
 import com.sudo.gehaltor.services.PDF_Executor;
 import javafx.beans.property.SimpleBooleanProperty;

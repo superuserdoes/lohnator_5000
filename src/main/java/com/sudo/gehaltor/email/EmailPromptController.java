@@ -1,7 +1,7 @@
 package com.sudo.gehaltor.email;
 
 import com.sudo.gehaltor.config.AppProperties;
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 import com.sudo.gehaltor.services.PDF_Executor;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;

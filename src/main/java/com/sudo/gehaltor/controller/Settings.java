@@ -1,5 +1,7 @@
-package com.sudo.gehaltor.config;
+package com.sudo.gehaltor.controller;
 
+import com.sudo.gehaltor.config.AppProperties;
+import com.sudo.gehaltor.data.AppSettings;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;

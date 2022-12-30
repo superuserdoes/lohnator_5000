@@ -2,7 +2,7 @@ package com.sudo.gehaltor.email;
 
 import com.sudo.gehaltor.config.AppConfiguration;
 import com.sudo.gehaltor.config.AppProperties;
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 import com.sudo.gehaltor.services.PDF_Executor;
 import com.sudo.gehaltor.view.TopMenuBarController;
 import javafx.beans.property.SimpleBooleanProperty;

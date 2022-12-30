@@ -1,5 +1,6 @@
 package com.sudo.gehaltor.config;
 
+import com.sudo.gehaltor.data.AppSettings;
 import com.sudo.gehaltor.security.Encryptor;
 
 import java.io.FileInputStream;

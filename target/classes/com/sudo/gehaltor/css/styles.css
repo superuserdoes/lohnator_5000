@@ -1,10 +1,4 @@
-#button_save_email_address_puwindow {
-    -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
-    -fx-text-fill: white;
-	-fx-font-size: 18px;
-}
-
-#login_button {
+#login_button, #button_save_email_address_puwindow {
     -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
     -fx-text-fill: white;
     -fx-text-align: center;
@@ -16,26 +10,42 @@
     -fx-text-align: center;
     -fx-font-size: 15px;
 }
-#btn_send_pdf {
+#btn_send_pdf, #btn_edit {
     -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
     -fx-text-fill: white;
 	-fx-font-size: 12px;
+    -fx-font-weight: bold;
 }
 
-.button:hover {
-    -fx-scale-x: 1.1;
-    -fx-scale-y: 1.1;
-}
-
-
-#btn_edit {
+#btn_print, #btn_settings_OK, #btn_update, #btn_email_send {
     -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-text-align: center;
 }
 
-#btn_edit:hover {
+#btn_update:disabled {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-text-align: center;
+}
+
+#btn_settings_apply, #btn_print_pdf, #btn_email_attachments {
+    -fx-background-color: linear-gradient(#ff9100 0%, #ffc000 64%, #f9ff00 100%);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-text-align: center;
+}
+
+#btn_cancel, #btn_settings_cancel, #btn_edit:selected, #toggle_search_by_name:selected {
+    -fx-background-color: linear-gradient(#eb1700 0%, #eb1700 38%, #f69090 100%);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-text-align: center;
+}
+
+.button:hover, #btn_edit:hover {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
@@ -54,47 +64,6 @@
     -fx-text-align: center;
 }
 
-#btn_edit:selected, #toggle_search_by_name:selected {
-    -fx-background-color: linear-gradient(#eb1700 0%, #eb1700 38%, #f69090 100%);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-
-#btn_update {
-    -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-#btn_update:disabled {
-    -fx-background-color: black;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-
-#btn_print {
-    -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-
-#btn_cancel {
-    -fx-background-color: linear-gradient(#eb1700 0%, #eb1700 38%, #f69090 100%);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-
-#btn_print_pdf {
-    -fx-background-color: linear-gradient(#eb1700 0%, #ee5909 38%, #eece10 100%);
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-text-align: center;
-}
-
 #label_time {
     -fx-text-fill: #EE5008;
     -fx-font-weight: bold;
@@ -104,7 +73,6 @@
 #vbox {
     -fx-background-color: #FFFFFF;
 }
-
 
 .list-cell:empty {
     visibility:hidden;
@@ -135,10 +103,6 @@
     -fx-border-color: #b1b1b1;
     -fx-background-color: #e0e0e0;
 }
-
-
-
-
 
 
 .check-box .box {
@@ -187,17 +151,11 @@
   -fx-background-color: #f7f7f7;
 }
 
-
-
 .tab-pane:top *.tab-header-area {
     -fx-background-insets: 0, 0 0 1 0;
  /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
     -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
 }
-
-
-
-
 
 /* remove the left right padding of the MenuBar and decrease the spacing */
 .menu-bar {
@@ -236,11 +194,6 @@
     -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
     -fx-text-fill: white; /* 5 */
 }
-
-
-
-
-
 
 
 /* Remove spacing */
@@ -290,13 +243,6 @@
     -fx-font-size: 12;
 }
 
-
-
-/** progress.css
-    place in same directory as
-    ColoredProgressBarStyleSheet.java or SimpleColoredProgressBar.java
-    ensure build system copies the css file to the build output path */
-
 #progressbar_download .bar {
     -fx-background-color: linear-gradient(#0032ff 0%, #1ca4cd 59%, #00c4ff 100%);
 }
@@ -309,21 +255,3 @@
     -fx-accent: transparent;
     -fx-background-color: transparent;
 }
-
-
-/*#tv_files .scroll-bar:vertical,*/
-/*#tv_files .scroll-bar:vertical *.increment-button,*/
-/*#tv_files .scroll-bar:vertical *.increment-arrow,*/
-/*#tv_files .scroll-bar:vertical *.decrement-button,*/
-/*#tv_files .scroll-bar:vertical *.decrement-arrow {*/
-/*    -fx-padding: 0;*/
-/*}*/
-
-
-/*.scroll-bar:vertical,*/
-/*.scroll-bar:vertical *.increment-button,*/
-/*.scroll-bar:vertical *.decrement-button,*/
-/*.scroll-bar:vertical *.increment-arrow,*/
-/*.scroll-bar:vertical *.decrement-arrow {*/
-/*    -fx-padding: 0;*/
-/*}*/

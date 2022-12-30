@@ -1,7 +1,7 @@
 package com.sudo.gehaltor.email;
 
 import com.sudo.gehaltor.config.AppConfiguration;
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.concurrent.Task;

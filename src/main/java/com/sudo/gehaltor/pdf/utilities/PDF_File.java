@@ -2,7 +2,7 @@ package com.sudo.gehaltor.pdf.utilities;
 
 import com.sudo.gehaltor.config.AppConfiguration;
 import com.sudo.gehaltor.config.AppProperties;
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 import com.sudo.gehaltor.data.Employee;
 import com.sudo.gehaltor.model.Employees;
 import com.sudo.gehaltor.security.RandomEncryptionPassword;

@@ -12,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-
-<BorderPane prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefWidth="640.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox spacing="15.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +26,7 @@
    <bottom>
       <FlowPane alignment="CENTER_RIGHT" columnHalignment="CENTER">
          <children>
-              <Button fx:id="btn_send_email" mnemonicParsing="false" text="Send" wrapText="true" />
+              <Button id="btn_email_send" fx:id="btn_send_email" mnemonicParsing="false" stylesheets="@../css/styles.css" text="Send" wrapText="true" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -42,7 +41,7 @@
                     <Label text="Sender:" wrapText="true" />
                     <Label text="Recipient:" wrapText="true" />
                     <Label text="Subject:" wrapText="true" />
-                    <Button fx:id="btn_add_file" mnemonicParsing="false" text="Attachment(s):" />
+                    <Button id="btn_email_attachments" fx:id="btn_add_file" mnemonicParsing="false" stylesheets="@../css/styles.css" text="Attachment(s):" />
                </children>
                <padding>
                   <Insets right="10.0" />
@@ -50,7 +49,7 @@
             </VBox>
             <VBox spacing="7.0">
                <children>
-                  <TextField fx:id="textField_sender_email" prefWidth="495.0" />
+                  <TextField fx:id="textField_sender_email" prefWidth="490.0" />
                     <TextField fx:id="textField_recipient_email" />
                     <TextField fx:id="textField_subject" />
                   <TextArea fx:id="textArea_attachments" editable="false" pickOnBounds="false" prefHeight="100.0" wrapText="true">

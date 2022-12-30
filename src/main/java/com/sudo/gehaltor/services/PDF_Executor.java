@@ -1,6 +1,6 @@
 package com.sudo.gehaltor.services;
 
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

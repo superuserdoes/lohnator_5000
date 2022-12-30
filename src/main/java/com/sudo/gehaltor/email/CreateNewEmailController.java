@@ -2,9 +2,10 @@ package com.sudo.gehaltor.email;
 
 
 import com.sudo.gehaltor.config.AppConfiguration;
-import com.sudo.gehaltor.config.AppSettings;
+import com.sudo.gehaltor.data.AppSettings;
 import com.sudo.gehaltor.model.Employees;
 import com.sudo.gehaltor.services.PDF_Executor;
+import javafx.beans.binding.Bindings;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -45,6 +46,12 @@ public class CreateNewEmailController {
     }
 
     private void send_email() {
+        btn_send_email.disableProperty().bind(
+                Bindings.when(textField_recipient_email.textProperty().isEmpty())
+                        .then(true)
+                        .otherwise(false)
+        );
+
         Task send_email = new Task() {
             @Override
             protected Object call() throws Exception {
@@ -101,12 +108,23 @@ public class CreateNewEmailController {
 
     private void set_message_text(){
         StringBuilder message = new StringBuilder();
-        message.append("Hallo " + Employees.getCurrentEmployee().getName() + ",</br></br>");
+        message.append("<html>\n" +
+                "       <head>\n" +
+                "           <meta charset=\"utf-8\"/>" +
+                "           <style>\n" +
+                "               body {\n" +
+                "                       font-family: \"times new roman\";\n" +
+                "                    }\n" +
+                "           </style>" +
+                "       </head>");
+        message.append("<body>Hallo " + Employees.getCurrentEmployee().getName() + ",</br></br>");
         if (attachments.size() == 1)
             message.append("Ich schicke dir den Lohnzettel, bitte sieh dir den Anhang an.</br></br>");
         else
             message.append("Ich schicke dir die Lohnzettel, bitte sieh dir die Anhaege an.</br></br>");
-        message.append("Mit freundlichen Grüßen,</br>Dein Chef");
+        message.append("Mit freundlichen Grüßen,</br>Dein Chef" +
+                        "</body>" +
+                        "</html>");
         htmlEditor_message_text.setHtmlText(message.toString());
     }
 
