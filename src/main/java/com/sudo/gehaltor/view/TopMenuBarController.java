@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -158,6 +159,7 @@ public class TopMenuBarController {
         fxmlLoader.setController(settings);
         try {
             Scene scene = new Scene(fxmlLoader.load());
+            stage.getIcons().add(new Image(String.valueOf(this.getClass().getResource("/com/sudo/gehaltor/logo/logo.png"))));
             stage.setTitle(AppConfiguration.PROGRAM_TITLE.getValue() + " - Settings");
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);

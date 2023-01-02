@@ -22,6 +22,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ProgressBarTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -267,6 +268,7 @@ public class LoadPDFs {
 
             try {
                 Scene scene = new Scene(fxmlLoader.load());
+                primary_stage.getIcons().add(new Image(String.valueOf(this.getClass().getResource("/com/sudo/gehaltor/logo/logo.png"))));
                 primary_stage.setTitle(AppConfiguration.PROGRAM_TITLE.getValue());
                 primary_stage.initModality(Modality.APPLICATION_MODAL);
                 primary_stage.setResizable(false);

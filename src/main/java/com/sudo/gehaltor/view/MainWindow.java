@@ -6,6 +6,7 @@ import com.sudo.gehaltor.pdf.utilities.PDF_File;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ public class MainWindow {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("/com/sudo/gehaltor/main_window/mainwindow.fxml"));
         fxmlLoader.setController(mwController);
         Scene scene = new Scene(fxmlLoader.load());
+        stage.getIcons().add(new Image(String.valueOf(this.getClass().getResource("/com/sudo/gehaltor/logo/logo.png"))));
         stage.setTitle(AppConfiguration.PROGRAM_TITLE.getValue());
         stage.setScene(scene);
         stage.setAlwaysOnTop(false);
