@@ -243,9 +243,9 @@ public class LoadPDFs {
         Button emailButton = new Button("Download and process PDF(s)");
         emailButton.setStyle(
 //                "-fx-background-color: linear-gradient(#ffcd00 0%, #feff00 59%, #fff400 100%);\n" +
-                "-fx-background-color: linear-gradient(#32ff00 0%, #b0ff00 59%, #ffde00 100%);\n" +
-//                "-fx-text-fill: white;\n" +
-                "-fx-text-fill: grey;\n" +
+//                "-fx-background-color: linear-gradient(#32ff00 0%, #b0ff00 59%, #ffde00 100%);\n" +
+                "-fx-background-color: linear-gradient(#ff9100 0%, #ffc000 64%, #f9ff00 100%);\n" +
+                "-fx-text-fill: white;\n" +
                 "-fx-font-size: 14px;"
         );
 
@@ -284,7 +284,13 @@ public class LoadPDFs {
             } catch (Exception e){ System.out.println("Couldn't load login screen: " + e); }
         });
 
-        final VBox box = new VBox(newTasksButton, emailButton);
+        final Label label = new Label("Welcome " + System.getProperty("user.name") + ", please choose one option:");
+        label.setStyle(
+                "-fx-text-fill: black;" +
+                "-fx-font-size: 17px;" +
+                "-fx-font-style: italic;"
+        );
+        final VBox box = new VBox(label, newTasksButton, emailButton);
         box.setSpacing(20);
 
         table.setPlaceholder(box);
