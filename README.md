@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">A desktop app automating extraction of paychecks from a multi-page financial report PDF file created by a financial advisor.</h4>
+<h4 align="center">A multithreaded desktop app automating extraction of paychecks from a multi-page financial report PDF file created by a financial advisor, optionally printing and sending them via e-mail.</h4>
 
 <p align="center"> •
   <a href="#key-features">Key Features</a> •

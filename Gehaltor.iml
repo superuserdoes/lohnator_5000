@@ -49,9 +49,9 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.36" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:win:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:win:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:11.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:win:11.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:win:19" level="project" />
   </component>
 </module>
