@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,7 +19,6 @@ import org.apache.pdfbox.printing.PDFPageable;
 
 import javax.print.DocPrintJob;
 import javax.print.PrintService;
-import javax.print.attribute.Attribute;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.*;
@@ -26,6 +26,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -109,13 +110,15 @@ public class CustomPrinterSettings {
         try {
             showPrinterSettings();
             this.files = files;
-            setup_appearance_job_attributes_job_name(); // FIXME
+            setup_appearance_job_attributes_job_name();
         }catch (Exception e){};
     }
 
     public CustomPrinterSettings(File file) {
         try {
             showPrinterSettings();
+            this.files = new ArrayList<>();
+            this.files.add(file);
             this.file = file;
             setup_appearance_job_attributes_job_name();
         } catch (IOException e) {e.printStackTrace();}
@@ -150,7 +153,6 @@ public class CustomPrinterSettings {
         choice_box_ps_name.getSelectionModel().selectFirst();
         setCustomPrinterName(choice_box_ps_name.getSelectionModel().getSelectedItem());
         choice_box_ps_name.getSelectionModel().selectedItemProperty().addListener((observableValue, s, t1) -> {
-            System.out.println("NEW PRINTER!!!!");
             customPrinterNameProperty().bind(observableValue);
         });
     }
@@ -166,7 +168,6 @@ public class CustomPrinterSettings {
 
     private void setup_general_radio_buttons() {
         radio_print_range_pages.selectedProperty().addListener(observable -> {
-            System.out.println("PAGES selected!");
             if (radio_print_range_pages.isSelected()){
                 text_field_pr_from.setDisable(false);
                 text_field_pr_to.setDisable(false);
@@ -202,20 +203,14 @@ public class CustomPrinterSettings {
         toggleGroup.getToggles().add(radio_print_range_all);
         toggleGroup.getToggles().add(radio_print_range_pages);
 
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-            System.err.println(t1 + " selected! (Tab General - Print Range)");
-            settings_radio_print_range = (RadioButton) toggleGroup.getSelectedToggle();
-        });
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) ->
+            settings_radio_print_range = (RadioButton) toggleGroup.getSelectedToggle()
+        );
     }
 
     private void setup_general_spinner() {
         int min = 1, max = 99;
         spinner_copies_num_of_copies.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(min,max));
-        spinner_copies_num_of_copies.valueProperty().addListener((obs, oldValue, newValue) -> {
-            if (newValue <= max){
-                System.out.println("VALUE CHANGED: " + newValue);
-            }
-        });
     }
 
     // ---------------------------------------------------------------------------------
@@ -257,13 +252,9 @@ public class CustomPrinterSettings {
         toggleGroup.getToggles().add(radio_page_setup_landscape);
         toggleGroup.getToggles().add(radio_page_setup_reverse_portrait);
         toggleGroup.getToggles().add(radio_page_setup_reverse_landscape);
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-//            settings_radio_orientation.textProperty().set(t1.getProperties();
-            System.out.println("NAME: " + t1.getUserData());
-            System.out.println("NAME: " + (RadioButton) observableValue.getValue());
-            System.err.println(t1 + " selected! (Tab Page Setup - Orientation)");
-            settings_radio_orientation = (RadioButton) toggleGroup.getSelectedToggle();
-        });
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) ->
+            settings_radio_orientation = (RadioButton) toggleGroup.getSelectedToggle()
+        );
     }
 
     private void setup_page_setup_text_inputs() {
@@ -314,10 +305,9 @@ public class CustomPrinterSettings {
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().add(radio_color_appearance_monochrome);
         toggleGroup.getToggles().add(radio_color_appearance_color);
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-            System.err.println(t1 + " selected! (Tab Appearance - Color Appearance)");
-            settings_radio_color_appearance = (RadioButton) toggleGroup.getSelectedToggle();
-        });
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) ->
+            settings_radio_color_appearance = (RadioButton) toggleGroup.getSelectedToggle()
+        );
     }
 
     private void setup_appearance_quality() {
@@ -325,10 +315,9 @@ public class CustomPrinterSettings {
         toggleGroup.getToggles().add(radio_quality_draft);
         toggleGroup.getToggles().add(radio_quality_normal);
         toggleGroup.getToggles().add(radio_quality_high);
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-            System.err.println(t1 + " selected! (Tab Appearance - Quality)");
-            settings_radio_quality = (RadioButton) toggleGroup.getSelectedToggle();
-        });
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) ->
+            settings_radio_quality = (RadioButton) toggleGroup.getSelectedToggle()
+        );
     }
 
     private void setup_appearance_sides() {
@@ -336,10 +325,9 @@ public class CustomPrinterSettings {
         toggleGroup.getToggles().add(radio_sides_one_side);
         toggleGroup.getToggles().add(radio_sides_tumble);
         toggleGroup.getToggles().add(radio_sides_duplex);
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-            System.err.println(t1 + " selected! (Tab Appearance - Sides)");
-            settings_radio_sides = (RadioButton) toggleGroup.getSelectedToggle();
-        });
+        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) ->
+            settings_radio_sides = (RadioButton) toggleGroup.getSelectedToggle()
+        );
     }
 
     private void setup_appearance_job_attributes() {
@@ -370,40 +358,19 @@ public class CustomPrinterSettings {
     private void setup_appearance_job_attributes_spinner() {
         int min = 1, max = 99;
         spinner_job_attributes_priority.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(min,max));
-        spinner_job_attributes_priority.valueProperty().addListener((obs, oldValue, newValue) -> {
-            if (newValue <= max){
-                System.out.println("VALUE CHANGED: " + newValue);
-            }
-        });
     }
 
 
     private void setup_buttons() {
         btn_print.setOnAction(event -> {
-            System.err.println("PRINT!");
-//            get_all_settings();
-//            set_default_print_request_attributes();
             try {
-//                print();
                 print_all();
             } catch (Exception e) { e.printStackTrace(); }
         });
 
-        btn_cancel.setOnAction(event -> {
-            System.err.println("CANCEL!");
-            this.window.close();
-        });
-    }
-
-    private void get_all_settings() {
-        System.err.println("Printer SETTINGS:");
-        System.err.println("Name: " + choice_box_ps_name.getSelectionModel().selectedItemProperty().get());
-        System.err.print("Print Range: " );
-            if (radio_print_range_all.isSelected()) System.err.println("All");
-            else{
-                System.err.println("From " + text_field_pr_from.getText() + " To " + text_field_pr_to.getText());
-            }
-        System.err.println("Copies: " + spinner_copies_num_of_copies.valueProperty().get());
+        btn_cancel.setOnAction(event ->
+            this.window.close()
+        );
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -413,42 +380,13 @@ public class CustomPrinterSettings {
     private void available_printer_names(){
         PrintService[] printServices = PrinterJob.lookupPrintServices();
 //        DocPrintJob printJob = printServices[0].createPrintJob(); // set it to the first printer (avoiding null)
-        System.err.println("ALL PRINTERS:");
         for (int i = 0; i < printServices.length; i++) {
             System.err.println("-> " + printServices[i].getName());
             printer_names.add(printServices[i].getName());
-//            if (printServices[i].getName().toLowerCase().contains(customPrinterName.get().toLowerCase())) {
-//                System.err.println("PRINTER FOUND: " + printServices[i].getName());
-//                printJob = printServices[i].createPrintJob(); // get the right/desired printer
-//            }
         }
     }
 
-    private void set_default_print_request_attributes(){
-        System.out.println("\n\nDEFAULT SETTINGS:");
-        System.out.println("Printer Name: " + choice_box_ps_name.getSelectionModel().getSelectedItem());
-        if (!settings_radio_print_range.getText().equalsIgnoreCase("All"))
-            System.out.println("Print Range:\n\tFrom: " + text_field_pr_from.getText() + " To: " + text_field_pr_to.getText());
-        else
-            System.out.println("Print Range: " + settings_radio_print_range.getText());
-        System.out.println("Number of Copies: " + spinner_copies_num_of_copies.getValue());
-        System.out.println("Media Size: " + choice_box_media_size.getSelectionModel().getSelectedItem());
-        System.out.println("Media Source: " + choice_box_media_source.getSelectionModel().getSelectedItem());
-        System.out.println("Orientation: " + settings_radio_orientation.getText());
-        System.out.println("Margins:");
-        System.out.println("-Left: " + text_field_margins_left.getText());
-        System.out.println("-Right: " + text_field_margins_right.getText());
-        System.out.println("-Top: " + text_field_margins_top.getText());
-        System.out.println("-Bottom: " + text_field_margins_bottom.getText());
-        System.out.println("Color Appearance: " + settings_radio_color_appearance.getText());
-        System.out.println("Quality: " + settings_radio_quality.getText());
-        System.out.println("Sides: " + settings_radio_sides.getText());
-        System.out.println("Job Name: " + text_field_job_attributes_job_name.getText());
-        System.out.println("User Name: " + text_field_job_attributes_user_name.getText());
-    }
-
     private void print() throws IOException, PrinterException {
-        System.err.println("PRINTING: " + file.getName());
         PDDocument pdDocument = Loader.loadPDF(file);
 
         PrinterJob job = PrinterJob.getPrinterJob();
@@ -457,33 +395,14 @@ public class CustomPrinterSettings {
         job.setJobName(file.getName());
 
         job.print(get_print_request_attributes());
-
-        System.out.println("PRINT REQUEST ATTRIBUTE SET:");
-        Attribute[] attributeArray = get_print_request_attributes().toArray();
-        for (Attribute a : attributeArray)
-            System.out.println(a.getName() + ": " + a);
         this.window.close();
     }
 
     private void print_all(){
-        System.out.println("CustomPrinterSettings.print_all");
         if (files != null || !files.isEmpty()){
             files.forEach(file -> {
-
                 this.file = file;
-//                setup_appearance_job_attributes_job_name();
                 try { print(); } catch (Exception e) {};
-
-//                try {
-//                    PDDocument pdDocument = Loader.loadPDF(file);
-//
-//                    PrinterJob job = PrinterJob.getPrinterJob();
-//                    job.setPrintService(setCustomPrinter().getPrintService()); // set the right/desired printer
-//                    job.setPageable(new PDFPageable(pdDocument));
-//                    job.setJobName(file.getName());
-//
-//                    job.print(get_print_request_attributes());
-//                } catch (Exception e){};
             });
         }
         this.window.close();
@@ -520,7 +439,6 @@ public class CustomPrinterSettings {
             attributes.add(Chromaticity.MONOCHROME);
         // all OR from to
         if (!settings_radio_print_range.getText().equalsIgnoreCase("All")){
-            System.out.println("Print Range:\n\tFrom: " + text_field_pr_from.getText() + " To: " + text_field_pr_to.getText());
             attributes.add(new PageRanges(
                     Integer.parseInt(text_field_pr_from.getText()),
                     Integer.parseInt(text_field_pr_to.getText())
@@ -550,11 +468,8 @@ public class CustomPrinterSettings {
         PrintService[] printServices = PrinterJob.lookupPrintServices();
         DocPrintJob printJob = printServices[0].createPrintJob(); // set it to the first printer (avoiding null)
         for (int i = 0; i < printServices.length; i++) {
-            System.err.println("Looking for " + choice_box_ps_name.getSelectionModel().getSelectedItem() + " in -> " + printServices[i].getName());
-            if (printServices[i].getName().toLowerCase().contains(customPrinterName.get().toLowerCase())) {
-                System.err.println("PRINTER FOUND: " + printServices[i].getName());
+            if (printServices[i].getName().toLowerCase().contains(customPrinterName.get().toLowerCase()))
                 printJob = printServices[i].createPrintJob(); // get the right/desired printer
-            }
         }
         return printJob;
     }
@@ -583,7 +498,7 @@ public class CustomPrinterSettings {
         window.setTitle(title);
         window.setMinWidth(250);
         window.setMinHeight(100);
-//        window.getIcons().add(new Image(getClass().getResourceAsStream("Smart_parking_icon.png")));
+        window.getIcons().add(new Image(getClass().getResourceAsStream("/com/sudo/gehaltor/logo/logo.png")));
 
         final Label label = new Label();
         label.setText(message);
@@ -606,6 +521,7 @@ public class CustomPrinterSettings {
         fxmlLoader.setController(this);
         Scene scene = new Scene(fxmlLoader.load());
 //            scene.getStylesheets().add(getClass().getResource(AppConfiguration.CSS_PATH.getValue()).toExternalForm());
+        window.getIcons().add(new Image(getClass().getResourceAsStream("/com/sudo/gehaltor/logo/logo.png")));
         window.setTitle(AppConfiguration.PROGRAM_TITLE.getValue() + " - Printer Settings");
         window.initModality(Modality.APPLICATION_MODAL);
         window.setResizable(false);

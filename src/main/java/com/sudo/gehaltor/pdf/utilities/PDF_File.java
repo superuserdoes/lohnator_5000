@@ -43,7 +43,6 @@ public interface PDF_File {
     static void auto_save(){
         try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(AppConfiguration.EMPLOYEE_SAVEFILE.getValue()))) {
             oos.writeObject(new ArrayList<>(Employees.getEmployees()));
-            System.out.println("\n****************************************** AUTO-SAVE ******************************************************\n");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -53,14 +52,12 @@ public interface PDF_File {
 
     static void onExit(){
         File temp = new File(AppConfiguration.TEMP_PATH.getValue());
-        System.out.println("Trying to delete: " + temp);
         delete_directory(temp);
     }
 
     static boolean load_save_file(){
         File employee_save_file = new File(AppConfiguration.EMPLOYEE_SAVEFILE.getValue());
         if (!employee_save_file.exists()){
-            System.out.println("Yooooooooooooooo, save file does NOT exist!");
             return false;
         }
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(employee_save_file))){
@@ -69,16 +66,13 @@ public interface PDF_File {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(AppConfiguration.EMPLOYEE_SAVEFILE.getValue() + " could NOT be found!");
         }
         return false;
     }
 
     static boolean load_default_properties(){
         File file = new File(AppSettings.getInstance().getProperty_file_path());
-        System.out.println("CHECK existance of " + file.getName() + " @ {" + file.getAbsolutePath() + "}");
         if (!file.exists()){
-            System.out.println("File does NOT exist, creating...");
             file.getParentFile().mkdirs();
             // create random encryption password
             AppSettings.getInstance().setEncryption_password(RandomEncryptionPassword.generateRandomString(13));
@@ -117,14 +111,16 @@ public interface PDF_File {
             bufferedOutputStream.close();
             return file;
         } catch (IOException e) {
-            System.err.println("COULDN'T SAVE PD_DOCUMENT AS A PDF FILE!");
+//            System.err.println("COULDN'T SAVE PD_DOCUMENT AS A PDF FILE!");
             return null;
         }
     }
 
     static boolean delete_file(File file) {
         try { return file.delete(); }
-        catch (Exception e) { System.err.println("COULDN'T DELETE " + file.getName() + " @ {" + file.getPath() + "}"); }
+        catch (Exception e) {
+//            System.err.println("COULDN'T DELETE " + file.getName() + " @ {" + file.getPath() + "}");
+        }
         return false;
     }
 
@@ -167,7 +163,7 @@ public interface PDF_File {
             return image_file;
 
         } catch (Exception e) {
-            System.err.println("COULDN'T CONVERT " + file.getName() + " TO A IMAGE FILE! @ {" + file.getPath() + "}");
+//            System.err.println("COULDN'T CONVERT " + file.getName() + " TO A IMAGE FILE! @ {" + file.getPath() + "}");
         }
         return null;
     }
@@ -180,7 +176,7 @@ public interface PDF_File {
             pdDocument.close();
             return buffered_image;
         } catch (Exception e) {
-            System.err.println("COULDN'T CONVERT " + file.getName() + " TO AN IMAGE FILE! @ {" + file.getPath() + "}");
+//            System.err.println("COULDN'T CONVERT " + file.getName() + " TO AN IMAGE FILE! @ {" + file.getPath() + "}");
         }
         return null;
     }
