@@ -21,7 +21,6 @@ public class CustomTreeView {
     private ObservableList<File> downloads;
     private CheckBoxTreeItem<File> rootItem;
     private File employee_root_file;
-    //TODO NEW TEST
     private ObservableSet<TreeItem<File>> checkedItems;
     private Employee employee;
     private SimpleBooleanProperty filesAdded = new SimpleBooleanProperty(false);
@@ -44,19 +43,6 @@ public class CustomTreeView {
 
     public CheckBoxTreeItem<File> getRootItem() {
         return rootItem;
-    }
-
-    public void on_send(){
-        System.out.println("SELECTED FILES (" + checkedItems.size() + "):");
-        checkedItems.forEach(stringTreeItem -> {
-            downloads.forEach(file -> {
-//                if (file.getName().equalsIgnoreCase(stringTreeItem.getValue().getName()) && !file.isDirectory()){
-                if (file.equals(stringTreeItem.getValue()) && !file.isDirectory()){
-                    if (file.exists()) System.out.println(file.getName() + " EXISTS");
-                    System.out.println(file.getName() + " @ {" + file.getAbsolutePath() + "}");
-                }
-            });
-        });
     }
 
     private void setup_tree_view() {
@@ -118,13 +104,6 @@ public class CustomTreeView {
                     });
                 }
             }
-        });
-
-        checkedItems.addListener((SetChangeListener<? super TreeItem<File>>) change -> {
-            System.out.println(checkedItems.size() + " SELECTED CHECKBOXES:");
-            checkedItems.forEach(checkBoxTreeItem -> {
-                System.out.println(checkBoxTreeItem.getValue());
-            });
         });
     }
 
