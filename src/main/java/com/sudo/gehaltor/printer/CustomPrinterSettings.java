@@ -381,7 +381,6 @@ public class CustomPrinterSettings {
         PrintService[] printServices = PrinterJob.lookupPrintServices();
 //        DocPrintJob printJob = printServices[0].createPrintJob(); // set it to the first printer (avoiding null)
         for (int i = 0; i < printServices.length; i++) {
-            System.err.println("-> " + printServices[i].getName());
             printer_names.add(printServices[i].getName());
         }
     }

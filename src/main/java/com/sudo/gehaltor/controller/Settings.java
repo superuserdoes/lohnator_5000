@@ -28,7 +28,6 @@ public class Settings {
     @FXML Button btn_reset_default;
     private SimpleBooleanProperty showPassword  = new SimpleBooleanProperty();
     private Tooltip toolTip;
-
     private Stage stage;
     private final int cores = Runtime.getRuntime().availableProcessors();
     private SimpleIntegerProperty threadCount;
@@ -38,7 +37,6 @@ public class Settings {
     }
 
     public void initialize(){
-        System.out.println("SETTINGS INITIALIZED!");
         buttons();
         setup_radio_buttons();
         setup_fields();
@@ -64,9 +62,6 @@ public class Settings {
         ToggleGroup toggleGroup = new ToggleGroup();
         toggleGroup.getToggles().add(rb_remember);
         toggleGroup.getToggles().add(rb_dont_remember);
-        toggleGroup.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
-            System.out.println(t1 + " selected!");
-        });
         if (AppSettings.getInstance().auto_loginProperty().get())
             rb_remember.setSelected(true);
         else
