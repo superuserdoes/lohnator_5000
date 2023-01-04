@@ -13,7 +13,7 @@
   <a href="#how-to-use">How To Use</a> •  
 </p>
 
-![screenshot]()
+![screenshot](https://github.com/superuserdoes/gehaltor_5000/blob/21f04d930f006a69d6458577d9860409ba95a70f/src/main/resources/com/sudo/gehaltor/gif/mainwindow.gif?raw=true)
 
 ## Key Features
 
