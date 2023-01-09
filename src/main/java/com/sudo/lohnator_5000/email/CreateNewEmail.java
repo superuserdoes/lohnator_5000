@@ -4,6 +4,7 @@ import com.sudo.lohnator_5000.config.AppConfiguration;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ public class CreateNewEmail {
         fxmlLoader.setController(createNewEmail);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(AppConfiguration.PROGRAM_TITLE.getValue());
+        stage.getIcons().add(new Image(String.valueOf(this.getClass().getResource("/com/sudo/lohnator_5000/logo/logo.png"))));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.setAlwaysOnTop(false);
