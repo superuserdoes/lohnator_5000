@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fbf9c820-f069-4f7c-b81d-03ec82cecd35" name="Changes" comment="CustomTreeView.java: Code refactoring.">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_win_19.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_3_0_0_RC1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_3_0_0_alpha2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_3_0_0_RC1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_3_0_0_alpha2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gehaltor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lohnator 5000.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/Start.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/config/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/config/AppConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/config/AppProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/config/AppProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/controller/CustomTreeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/controller/CustomTreeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/controller/MWController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/controller/MWController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/controller/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/controller/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/data/AppSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/data/AppSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/data/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/data/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/data/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/data/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/data/ReadObjectsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/data/ReadObjectsHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/data/WriteObjectsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/data/WriteObjectsHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/CreateNewEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/CreateNewEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/CreateNewEmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/CreateNewEmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/EmailConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/EmailPromptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/EmailPromptController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/email/OLDEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/OLDEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/model/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/model/Employees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/data/Data_Extractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/data/Data_Extractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/data/Page_Data_Extractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/data/Page_Data_Extractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/utilities/PDF_ERROR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/utilities/PDF_ERROR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/utilities/PDF_File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/utilities/PDF_File.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/utilities/PDF_OCR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/utilities/PDF_OCR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/pdf/utilities/PDF_Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/pdf/utilities/PDF_Processor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/printer/CustomPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/printer/CustomPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/printer/CustomPrinterSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/printer/CustomPrinterSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/security/CryptoUtilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/security/CryptoUtilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/security/Encryptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/security/Encryptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/security/RandomEncryptionPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/security/RandomEncryptionPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/services/LoadPDFs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/services/LoadPDFs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/services/PDF_Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/services/PDF_Executor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/services/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/services/Stopwatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sudo/gehaltor/view/TopMenuBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/view/TopMenuBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/gif/mainwindow.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/gif/mainwindow.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/login/email_prompt.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/login/email_prompt.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/login/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/login/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/login/send_email.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/login/send_email.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_128.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_24.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_256.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_256.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_512.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/logo/logo_64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/logo/logo_64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/main_window/mainwindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/main_window/mainwindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/main_window/printer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/main_window/printer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/settings/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/settings/settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/topmenu/about.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/topmenu/about.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/sudo/gehaltor/topmenu/topMenuBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/sudo/lohnator_5000/topmenu/topMenuBar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sudo/gehaltor/controller/CustomTreeView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sudo/gehaltor/controller/CustomTreeView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/sudo/gehaltor/controller/PulseUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/sudo/gehaltor/controller/PulseUtil.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="E-Mail_Integration" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="05f70620-8702-4e9e-9596-c248db1a9ada" />
+        <option name="url" value="https://github.com/superuserdoes/gehaltor_5000.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/sudo/lohnator_5000/email/EmailConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/module-info.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EvbIj1fuEFlt7UFIT5plmiCb7L" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "C:/Users/dosu/IdeaProjects/Gehaltor/src/main/resources/com/sudo/gehaltor/gif",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.sudo.gehaltor.pdf.utilities" />
+      <recent name="com.sudo.gehaltor.services" />
+      <recent name="com.sudo.gehaltor.view" />
+      <recent name="com.sudo.gehaltor.data" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\gif" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\logo" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\login" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\topmenu" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\main_window" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\java\com\sudo\gehaltor\TESTs" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\css" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\main_window\shit" />
+      <recent name="C:\Users\dosu\IdeaProjects\Gehaltor\src\main\resources\com\sudo\gehaltor\main_window" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sudo.gehaltor.pdf.data" />
+      <recent name="com.sudo.gehaltor.pdf" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sudo.gehaltor.view" />
+      <recent name="com.sudo.gehaltor.services.test" />
+      <recent name="com.sudo.gehaltor.pdf.utilities" />
+      <recent name="com.sudo.gehaltor.services" />
+      <recent name="com.sudo.gehaltor" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Start">
+    <configuration name="ImageTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.gehaltor.services.test.ImageTest" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.gehaltor.services.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainAppTF" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.gehaltor.services.test.MainAppTF" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.gehaltor.services.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShowAndWaitDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.gehaltor.ShowAndWaitDemo" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.lohnator_5000.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sorting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.gehaltor.zTESTs.Sorting" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.gehaltor.zTESTs.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Start" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.lohnator_5000.Start" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.lohnator_5000.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TESTCustomTreeView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sudo.gehaltor.services.test.TESTCustomTreeView" />
+      <module name="Lohnator 5000" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sudo.gehaltor.services.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TESTCustomTreeView" />
+        <item itemvalue="Application.Sorting" />
+        <item itemvalue="Application.ShowAndWaitDemo" />
+        <item itemvalue="Application.MainAppTF" />
+        <item itemvalue="Application.ImageTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbf9c820-f069-4f7c-b81d-03ec82cecd35" name="Changes" comment="" />
+      <created>1663478929105</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663478929105</updated>
+      <workItem from="1669995477848" duration="217000" />
+      <workItem from="1669995783607" duration="66943000" />
+      <workItem from="1671196062705" duration="73840000" />
+      <workItem from="1671550875225" duration="1620000" />
+      <workItem from="1671553117824" duration="922000" />
+      <workItem from="1671554046926" duration="29000" />
+      <workItem from="1671554092482" duration="116624000" />
+      <workItem from="1672809630069" duration="943000" />
+      <workItem from="1673268760161" duration="364000" />
+    </task>
+    <task id="LOCAL-00001" summary="LoadPDFs: Added filter to support only .pdf files.">
+      <created>1671217402637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671217402637</updated>
+    </task>
+    <task id="LOCAL-00002" summary="LoadPDFs: Removed commented code.">
+      <created>1671218461597</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1671218461597</updated>
+    </task>
+    <task id="LOCAL-00003" summary="MWController: Removed console output code and cleanup.">
+      <created>1671334440667</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671334440667</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Gehaltor.iml: Set Java SDK to 17.">
+      <created>1671335214037</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671335214037</updated>
+    </task>
+    <task id="LOCAL-00005" summary="GUI: Updated GUI, added new print button and main loading progressbar at the bottom of the window with text label indicating its progress.">
+      <created>1671374256132</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671374256132</updated>
+    </task>
+    <task id="LOCAL-00006" summary="E-Mail_Integration: Added support for connecting to hotmail server and downloading attachments, PDF files.">
+      <created>1671386477104</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671386477104</updated>
+    </task>
+    <task id="LOCAL-00007" summary="E-Mail_Integration: Deleted sensitive info.">
+      <created>1671386620264</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671386620264</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Settings: Created.">
+      <created>1671400439749</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671400439749</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Settings: Created.">
+      <created>1671400457053</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671400457053</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Settings: Added support for Properties file and thread count control.">
+      <created>1671412947953</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671412947953</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Settings: Quick fix for potential null parsing.">
+      <created>1671413253075</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671413253075</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Settings: Fix for saving properties and change of location.">
+      <created>1671417432848</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671417432848</updated>
+    </task>
+    <task id="LOCAL-00013" summary="MWController: Added support for sending PDF(s) via E-Mails.">
+      <created>1671423978417</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1671423978417</updated>
+    </task>
+    <task id="LOCAL-00014" summary="MWController: Made a typo.">
+      <created>1671424126256</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1671424126256</updated>
+    </task>
+    <task id="LOCAL-00015" summary="MWController: Added support for printing a single PDF file.">
+      <created>1671425417972</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1671425417972</updated>
+    </task>
+    <task id="LOCAL-00016" summary="First commit.">
+      <created>1671552167185</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1671552167185</updated>
+    </task>
+    <task id="LOCAL-00017" summary="First commit.">
+      <created>1671553349256</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1671553349256</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Properties: Added new controls, upgrade and update.">
+      <created>1672107330624</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672107330624</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Properties: Added new controls, upgrade and update.">
+      <created>1672107341061</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672107341061</updated>
+    </task>
+    <task id="LOCAL-00020" summary="AppSettings.java: Deleted commented code.">
+      <created>1672107403413</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1672107403413</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Settings &amp; E-Mail login: Added support for E-Mail login and saving credentials, GUI update and upgrade.">
+      <created>1672161153653</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1672161153653</updated>
+    </task>
+    <task id="LOCAL-00022" summary="E-Mail: Updated GUI for creating new e-mail message and added support for managing attachments.">
+      <created>1672256591202</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672256591202</updated>
+    </task>
+    <task id="LOCAL-00023" summary="CustomPrinterSettings.java: Added support for printing multiple files on one go and correct printer job naming.">
+      <created>1672325588804</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1672325588804</updated>
+    </task>
+    <task id="LOCAL-00024" summary="MWController.java: Deleted some old, unused code.">
+      <created>1672325684288</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1672325684288</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Security: Added AES Password-Based encryption and decryption for E-Mail password.">
+      <created>1672330832016</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1672330832016</updated>
+    </task>
+    <task id="LOCAL-00026" summary="GUI &lt;-&gt; Styles.css: Updated css file and small tweaks to GUI.">
+      <created>1672425261370</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672425261370</updated>
+    </task>
+    <task id="LOCAL-00027" summary="DELETED: An old, unused .fxml file.">
+      <created>1672425332761</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1672425332761</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Welcome GUI: Updated welcoming screen.">
+      <created>1672619290909</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1672619290909</updated>
+    </task>
+    <task id="LOCAL-00029" summary="GUI: Added icon.">
+      <created>1672628302780</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1672628302780</updated>
+    </task>
+    <task id="LOCAL-00030" summary="GUI: Updated icon.">
+      <created>1672691502938</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1672691502938</updated>
+    </task>
+    <task id="LOCAL-00031" summary="GUI: Updated icon, transparent.">
+      <created>1672692402976</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1672692402976</updated>
+    </task>
+    <task id="LOCAL-00032" summary="README.md: Updated README.">
+      <created>1672809397145</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1672809397145</updated>
+    </task>
+    <task id="LOCAL-00033" summary="README.md: Updated README.">
+      <created>1672809484470</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1672809484470</updated>
+    </task>
+    <task id="LOCAL-00034" summary="README.md: Updated README.">
+      <created>1672810089553</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1672810089553</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Settings.java: Code refactoring.">
+      <created>1672810294239</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1672810294239</updated>
+    </task>
+    <task id="LOCAL-00036" summary="CustomTreeView.java: Code refactoring.">
+      <created>1672810467566</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1672810467566</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="b28c9e76-4a3a-4a41-b9fa-1ae921a51634">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Settings: Created." />
+    <MESSAGE value="Settings: Added support for Properties file and thread count control." />
+    <MESSAGE value="Settings: Quick fix for potential null parsing." />
+    <MESSAGE value="Settings: Fix for saving properties and change of location." />
+    <MESSAGE value="MWController: Added support for sending PDF(s) via E-Mails." />
+    <MESSAGE value="MWController: Made a typo." />
+    <MESSAGE value="MWController: Added support for printing a single PDF file." />
+    <MESSAGE value="First commit." />
+    <MESSAGE value="Settings.java: Updated Properties using a singleton approach." />
+    <MESSAGE value="Properties: Added new controls, upgrade and update." />
+    <MESSAGE value="AppSettings.java: Deleted commented code." />
+    <MESSAGE value="Settings &amp; E-Mail login: Added support for E-Mail login and saving credentials, GUI update and upgrade." />
+    <MESSAGE value="E-Mail: Updated GUI for creating new e-mail message and added support for managing attachments." />
+    <MESSAGE value="CustomPrinterSettings.java: Added support for printing multiple files on one go and correct printer job naming." />
+    <MESSAGE value="MWController.java: Deleted some old, unused code." />
+    <MESSAGE value="Security: Added AES Password-Based encryption and decryption for E-Mail password." />
+    <MESSAGE value="GUI &lt;-&gt; Styles.css: Updated css file and small tweaks to GUI." />
+    <MESSAGE value="DELETED: An old, unused .fxml file." />
+    <MESSAGE value="Welcome GUI: Updated welcoming screen." />
+    <MESSAGE value="GUI: Added icon." />
+    <MESSAGE value="GUI: Updated icon." />
+    <MESSAGE value="GUI: Updated icon, transparent." />
+    <MESSAGE value="README.md: Updated README." />
+    <MESSAGE value="Settings.java: Code refactoring." />
+    <MESSAGE value="CustomTreeView.java: Code refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="CustomTreeView.java: Code refactoring." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.StackOverflowError" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

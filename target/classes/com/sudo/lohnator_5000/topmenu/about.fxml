@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+
+<DialogPane fx:id="aboutDialogPane" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <ScrollPane fitToHeight="true" hbarPolicy="NEVER">
+        <content>
+            <TextArea editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../css/styles.css" text="All information can be found on the following link:&#10;&#10;https://github.com/superuserdoes/gehaltor_5000" wrapText="true" />
+        </content>
+      </ScrollPane>
+   </content>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</DialogPane>
