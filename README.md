@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>  
-  <img src="https://raw.githubusercontent.com/superuserdoes/gehaltor_5000/main/src/main/resources/com/sudo/gehaltor/logo/logo.png" alt="Lohnator 5000" width="200">
+  <img src="https://raw.githubusercontent.com/superuserdoes/lohnator_5000/main/src/main/resources/com/sudo/lohnator_5000/logo/logo.png" alt="Lohnator 5000" width="200">
   <br>
   Lohnator 5000
   <br>
@@ -13,7 +13,7 @@
   <a href="#how-to-use">How To Use</a> •  
 </p>
 
-![screenshot](https://github.com/superuserdoes/gehaltor_5000/blob/21f04d930f006a69d6458577d9860409ba95a70f/src/main/resources/com/sudo/gehaltor/gif/mainwindow.gif?raw=true)
+![screenshot](https://github.com/superuserdoes/lohnator_5000/raw/main/src/main/resources/com/sudo/lohnator_5000/gif/mainwindow.gif?raw=true)
 
 ## Key Features
 
@@ -44,9 +44,9 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/superuserdoes/gehaltor_5000.git
+$ git clone https://github.com/superuserdoes/lohnator_5000.git
 
-$ cd gehaltor_5000
+$ cd lohnator_5000
 ```
 
 > Open the project and navigate to <i><b>Start.java</b></i> and right click <b><i>Run 'Start.main()</b></i>'.
