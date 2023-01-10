@@ -18,11 +18,11 @@
 
 ## Key Features
 
-* Live Processing - Add file(s), See change(s)
+* [Live Processing - Add file(s), See change(s)](#live-processing-of-PDF-files)
     - Instantly see which files are being processed and the result.
-* Sync Files
-    - Downloads automatically the newest files from the specified E-Mail account.
-* Save E-Mail credentials (optional)
+* [Sync Files](#application-settings)
+  - Downloads automatically the newest files from the specified E-Mail account.
+* [Save E-Mail credentials (optional)](#application-settings) 
    - AES Password-Based encryption and decryption.
 * Support for PDF files with (in)correct Encoding value(s). Specifically, PDF's resources:
     -  Fonts encoding:
@@ -31,10 +31,10 @@
   - (in)complete ToUnicode map(ping) 
 * OCR (Optical Character Recognition) support
   - Using Tesseract via tess4j to extract the text from embedded images.
-* Print single or multiple PDF file(s)
-* Send single or multiple PDF file(s) via E-Mail
+* [Print single or multiple PDF file(s)](#print-pdf)
+* [Send single or multiple PDF file(s) via E-Mail](#send-pdf)
 * Resizable Window
-* Multithreaded
+* [Multithreaded](#application-settings)
    - Number of threads can be manually adjusted in Settings.
 * Cross-platform
     - Windows, macOS and Linux ready.
