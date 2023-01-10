@@ -118,6 +118,8 @@ Showing all parts of the App.
 
 ## How To Use
 
+[(Back to top)](#key-features)
+
 To clone and run this application, you'll need [Git](https://git-scm.com) installed on your computer. From your command line:
 
 ```bash
